@@ -11,3 +11,18 @@ hero:
       link: /guides/about/
       icon: right-arrow
 ---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+## サービス一覧
+
+<CardGrid>
+
+<LinkCard title='Misskey' href='https://yami.ski' description='Misskey（ミスキー）はOSSの分散型ソーシャルネットワーキングプラットフォームです。' />
+<LinkCard title='SearXNG' href='https://search.yami.ski' description='SearXNG（さーえっくすえぬじー）は個人情報を収集しないOSSのメタサーチエンジンです。' />
+<LinkCard title='Element' href='https://chat.yami.ski' description='Element（えれめんと）はOSSの分散型E2EE暗号化チャットプラットフォームです。' />
+<LinkCard title='Jitsi' href='https://call.yami.ski' description='Jitsi（じつし）は個人情報を収集しないOSSのE2EE暗号化ビデオ・音声通話サービスです。' />
+<LinkCard title='CryptPad' href='https://pad.yami.ski' description='CryptPad（くりぷとぱっど）はOSSのE2EE暗号化共同作業オフィススウィートです。' />
+<LinkCard title='CTFd' href='https://ctf.yami.ski' description='CTFd（しーてぃーえふでぃー）はOSSのハッキングeスポーツCTFプラットフォームです。' />
+
+</CardGrid>
