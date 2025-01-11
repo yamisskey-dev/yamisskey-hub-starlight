@@ -3,7 +3,7 @@ import starlightPlugin from '@astrojs/starlight-tailwind';
 
 const accent = {
   200: '#D4D0FF',
-  600: '#CC66FF', // ライトテーマのボタン
+  600: '#C242C8', // ライトテーマのボタン
   900: '#372D7A',
   950: '#211F40',
 };
