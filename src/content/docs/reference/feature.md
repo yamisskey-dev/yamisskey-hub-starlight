@@ -63,7 +63,7 @@ description: A guide in my new Starlight docs site.
 
 ## ロール
 
-### ベースロール設定
+### ベースロール
 | 設定項目 | 値 |
 |----------|-----|
 | レートリミット | 300% |
