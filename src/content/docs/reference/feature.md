@@ -3,9 +3,7 @@ title: やみすきーの特徴
 description: A guide in my new Starlight docs site.
 ---
 
-# 特色
-
-## 心理的安全
+# やみすきーの特徴
 
 ## プライバシー保護
 
@@ -44,8 +42,6 @@ description: A guide in my new Starlight docs site.
 
 ### Torユーザー
 - https://yami.ski でログイン可能
-
-# 仕様
 
 ## 初期設定
 
