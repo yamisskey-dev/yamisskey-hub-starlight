@@ -145,11 +145,11 @@ botじゃないリモートユーザーです。GTLに流します。
 #### 警戒（マニュアル）
 要確認ユーザーです。コンディショナルロールを制限します。
 
-# 改変
+## 改変
 
 https://github.com/yamisskey/yamisskey/blob/master/DIFFERENCE.md
 
-## 秘匿化
+### 秘匿化
 - [ウェルカムページ](https://yami.ski)からLTLのハイライトを削除
 - [about](https://yami.ski/about)から連合一覧と絵文字一覧とチャートを削除
 - ログインユーザー以外はLTLとユーザープロフィールと連合なしノートを閲覧できない
@@ -159,7 +159,7 @@ https://github.com/yamisskey/yamisskey/blob/master/DIFFERENCE.md
 - URL previewで表示されるメタ情報の削除
 - プロフィールの一部を非表示
 
-## 心理的安全
+### 心理的安全
 - フォロリク自動拒否
 - ノートの自動消滅
 - ノートの自動消滅をデフォルトにできるように
@@ -168,7 +168,7 @@ https://github.com/yamisskey/yamisskey/blob/master/DIFFERENCE.md
 - リアクション数の非表示をできるように
 - やみすきー独自TL「やみTL」（開発中）
 
-## 機能追加
+### 機能追加
 - リバーシの連合に対応
 - Misskey v13で廃止されたLaTeX表記の復活
 - ユーザーのサーバー情報をアイコンのみにできるように
