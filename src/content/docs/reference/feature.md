@@ -3,8 +3,6 @@ title: やみすきーの特徴
 description: A guide in my new Starlight docs site.
 ---
 
-# やみすきーの特徴
-
 ## プライバシー保護
 
 ### 開発者
