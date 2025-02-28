@@ -178,4 +178,5 @@ https://github.com/yamisskey/yamisskey/blob/master/DIFFERENCE.md
 ### 機能追加
 - リバーシの連合に対応
 - Misskey v13で廃止されたLaTeX表記の復活
+- ユーザーがカスタムフォントを選択肢から選べるように
 - ユーザーのサーバー情報をアイコンのみにできるように
