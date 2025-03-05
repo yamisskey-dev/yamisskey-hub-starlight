@@ -5,20 +5,20 @@ description: A guide in my new Starlight docs site.
 
 ## 概要
 
-このガイドでは、Misskeyフォーク「やみすきー」の開発手順について説明します。本番環境（master）、テスト環境（nayami）、開発環境（muyami）の3つのブランチを使用した開発フローと、アップストリーム（Misskey本体）からの変更取り込み手順を解説します。
+このガイドでは、Misskeyフォーク「[yamisskey](https://github.com/yamisskey/yamisskey/)」の開発手順について説明します。本番環境（[master](https://github.com/yamisskey/yamisskey/tree/master)）、テスト環境（[nayami](https://github.com/yamisskey/yamisskey/tree/nayami)）、開発環境（[muyami](https://github.com/yamisskey/yamisskey/tree/muyami)）の3つのブランチを使用した開発フローと、アップストリーム（[Misskey本体](https://github.com/misskey-dev/misskey/tree/master)）からの変更取り込み手順を解説します。
 
 ## ブランチ構成と役割
 
 ### masterブランチ（本番環境）
 
-* やみすきーの安定運用版として位置づけ
+* [やみすきー](https://yami.ski/)の安定運用版として位置づけ
 * バージョン名には「yami」を使用（例: 2025.1.0-yami-1.4.3）
 * Misskeyの新機能は、やみすきーのコンセプト（プライバシー重視、心理的安全重視）に合致するものだけを選択的に取り入れる
 * 本番環境での安定した運用を重視
 
 ### nayamiブランチ（テスト環境）
 
-* なやみすきーはテスト版として位置づけ
+* [なやみすきー](https://na.yami.ski/)はテスト版として位置づけ
 * 開発完了した機能の検証用
 * バージョン名には「nayami」を使用（例: 2025.1.0-nayami-1.4.3）
 * 本番環境への反映前の最終検証を行う場所
