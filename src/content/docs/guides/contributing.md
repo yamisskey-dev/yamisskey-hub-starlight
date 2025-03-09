@@ -103,7 +103,7 @@ git push origin muyami
 git checkout muyami
 
 # 機能ごとのトピックブランチを作成
-git checkout -b feature/新機能名
+git checkout -b feat/新機能名
 ```
 
 #### 2. 開発作業
@@ -129,7 +129,7 @@ git commit -m "feat: 機能の説明"
 git checkout muyami
 
 # 開発した機能をマージ
-git merge feature/新機能名
+git merge feat/新機能名
 
 # muyamiブランチの更新をリモートに反映
 git push origin muyami
