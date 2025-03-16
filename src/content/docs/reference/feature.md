@@ -181,6 +181,7 @@ https://github.com/yamisskey/yamisskey/blob/master/DIFFERENCE.md
 - ノート数も隠せるように(対応しているリモートは隠れる)
 - URL previewで表示されるメタ情報の削除
 - プロフィールの一部を非表示
+- RSSフィードへの（APIでも）アクセスが「アカウントを見つけやすくする」と「コンテンツの表示にログインを必須」を考慮するように
 
 ### 心理的安全
 - フォロリク自動拒否
