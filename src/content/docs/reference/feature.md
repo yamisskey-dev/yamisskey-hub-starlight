@@ -1,6 +1,6 @@
 ---
 title: やみすきーの特徴
-description: A guide in my new Starlight docs site.
+description: やみすきーのプライバシー保護機能・ユーザー設定・ロール体系と独自改変点の詳細解説
 ---
 
 ## プライバシー保護

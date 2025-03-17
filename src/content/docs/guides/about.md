@@ -1,6 +1,6 @@
 ---
 title: やみすきーについて
-description: A guide in my new Starlight docs site.
+description: メンタルファーストとプライバシーファーストを掲げるMisskeyサーバー『やみすきー』の理念と概要
 ---
 
 ## やみすきーとは

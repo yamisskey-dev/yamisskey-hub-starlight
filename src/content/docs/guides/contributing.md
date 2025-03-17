@@ -1,6 +1,6 @@
 ---
-title: やみすきー開発ガイド
-description: A guide in my new Starlight docs site.
+title: yamisskey開発ガイド
+description: Misskeyフォークyamisskeyにおけるブランチ管理からリリースまでの包括的な開発者ガイド
 ---
 
 ## 概要
