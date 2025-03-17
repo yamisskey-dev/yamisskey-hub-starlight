@@ -1,6 +1,7 @@
 ---
 title: yamisskey開発ガイド
 description: Misskeyフォークyamisskeyにおけるブランチ管理からリリースまでの包括的な開発者ガイド
+ogImage: ../../assets/logo.webp
 ---
 
 ## 概要

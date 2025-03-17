@@ -7,6 +7,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'やみはぶ',
+      logo: {
+        src: './src/assets/logo.webp', // Add the logo for the site header
+      },
       social: {
         github: 'https://github.com/yamisskey/hub.yami.ski',
       },
@@ -30,5 +33,6 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+  site: 'https://hub.yami.ski', // Set your site URL here
 });
 
