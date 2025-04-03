@@ -198,3 +198,4 @@ https://github.com/yamisskey/yamisskey/blob/master/DIFFERENCE.md
 - Misskey v13で廃止されたLaTeX表記の復活
 - ユーザーがカスタムフォントを選択肢から選べるように
 - ユーザーのサーバー情報をアイコンのみにできるように
+- ノートの予約投稿
