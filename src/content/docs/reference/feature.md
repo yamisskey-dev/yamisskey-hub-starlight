@@ -1,5 +1,5 @@
 ---
-title: やみすきーの特徴
+title: やみすきーの特徴一覧
 description: やみすきーのプライバシー保護機能・ユーザー設定・ロール体系と独自改変点の詳細解説
 ogImage: ../../assets/logo.webp
 ---
@@ -170,8 +170,6 @@ ogImage: ../../assets/logo.webp
 | 健常 | 一般ユーザー | 非公開 | 非公開 | オフ | botではないリモートユーザー | GTLに表示権限 |
 
 ## 改変
-
-https://github.com/yamisskey/yamisskey/blob/master/DIFFERENCE.md
 
 ### 秘匿化
 - [ウェルカムページ](https://yami.ski)からLTLのハイライトを削除
