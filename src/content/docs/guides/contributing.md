@@ -172,17 +172,7 @@ git push origin master
 
 ### 準備作業
 
-
-1. 現在の状態のバックアップ
-
-```bash
-git branch backup/[現在のバージョン] muyami
-git branch backup/[現在のバージョン]-nayami nayami
-git branch backup/[現在のバージョン]-master master
-```
-
-
-2. package.jsonのバージョン更新確認
+1. package.jsonのバージョン更新確認
 
 ```json
 {
@@ -196,11 +186,24 @@ git branch backup/[現在のバージョン]-master master
 }
 ```
 
+
+2. 現在の状態のバックアップ
+
+```bash
+git checkout muyami
+git branch backup/[現在のバージョン] muyami
+git checkout nayami
+git branch backup/[現在のバージョン] nayami
+git checkout master
+git branch backup/[現在のバージョン] master
+```
+
 ### マージプロセス
 
 #### 1. 開発ブランチ（muyami）への変更取り込み
 
 ```bash
+git fetch --all
 git checkout muyami
 git merge upstream/master
 ```
