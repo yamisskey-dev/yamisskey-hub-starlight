@@ -1,29 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
 <defs>
-  <!-- 月のグラデーション：黄金比を意識した配置 -->
+  <!-- 月のグラデーション：紫を強調したバージョン -->
   <radialGradient id="moonGradient" cx="38.2%" cy="38.2%" r="85%">
-    <stop offset="0%" style="stop-color:#B24CAA;stop-opacity:1" />
-    <stop offset="12%" style="stop-color:#AC46A6;stop-opacity:1" />
-    <stop offset="24%" style="stop-color:#A640A2;stop-opacity:1" />
-    <stop offset="36%" style="stop-color:#9E389E;stop-opacity:1" />
-    <stop offset="48%" style="stop-color:#96309A;stop-opacity:1" />
-    <stop offset="60%" style="stop-color:#8E2896;stop-opacity:1" />
-    <stop offset="72%" style="stop-color:#822290;stop-opacity:1" />
-    <stop offset="84%" style="stop-color:#6A1E86;stop-opacity:1" />
-    <stop offset="100%" style="stop-color:#4A1A7A;stop-opacity:1" />
+    <stop offset="0%" style="stop-color:#A32E6B;stop-opacity:1" />
+    <stop offset="12%" style="stop-color:#982A70;stop-opacity:1" />
+    <stop offset="24%" style="stop-color:#8D2675;stop-opacity:1" />
+    <stop offset="36%" style="stop-color:#82227A;stop-opacity:1" />
+    <stop offset="48%" style="stop-color:#771E7F;stop-opacity:1" />
+    <stop offset="60%" style="stop-color:#6C1A84;stop-opacity:1" />
+    <stop offset="72%" style="stop-color:#611689;stop-opacity:1" />
+    <stop offset="84%" style="stop-color:#56128E;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#371566;stop-opacity:1" />
   </radialGradient>
   
-  <!-- 鍵のグラデーション：精密な8段階遷移 -->
+  <!-- 鍵のグラデーション：より深い紫寄りの配色 -->
   <linearGradient id="keyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" style="stop-color:#622EAA;stop-opacity:1" />
-    <stop offset="12.5%" style="stop-color:#5E36B0;stop-opacity:1" />
-    <stop offset="25%" style="stop-color:#5A3EB6;stop-opacity:1" />
-    <stop offset="37.5%" style="stop-color:#5646BC;stop-opacity:1" />
-    <stop offset="50%" style="stop-color:#5250C2;stop-opacity:1" />
-    <stop offset="62.5%" style="stop-color:#4C5CC8;stop-opacity:1" />
-    <stop offset="75%" style="stop-color:#4668CE;stop-opacity:1" />
-    <stop offset="87.5%" style="stop-color:#3E7CD6;stop-opacity:1" />
-    <stop offset="100%" style="stop-color:#3690DE;stop-opacity:0.98" />
+    <stop offset="0%" style="stop-color:#5A2C99;stop-opacity:1" />
+    <stop offset="12.5%" style="stop-color:#5634A3;stop-opacity:1" />
+    <stop offset="25%" style="stop-color:#523CAD;stop-opacity:1" />
+    <stop offset="37.5%" style="stop-color:#4E44B7;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#4A4CC1;stop-opacity:1" />
+    <stop offset="62.5%" style="stop-color:#4654CB;stop-opacity:1" />
+    <stop offset="75%" style="stop-color:#425CD5;stop-opacity:1" />
+    <stop offset="87.5%" style="stop-color:#3A70DD;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#2B8AC9;stop-opacity:0.98" />
   </linearGradient>
   
   <!-- 精密に調整されたグロー効果 -->
@@ -33,7 +33,7 @@
       1 0 0 0 0
       0 1 0 0 0
       0 0 1 0 0
-      0 0 0 3.4 -1.25" result="glow"/>
+      0 0 0 3.6 -1.4" result="glow"/>
     <feBlend in="SourceGraphic" in2="glow" mode="screen"/>
   </filter>
   
@@ -41,8 +41,8 @@
   <filter id="optimizedShine" x="-21%" y="-21%" width="142%" height="142%">
     <feGaussianBlur in="SourceAlpha" stdDeviation="1.35" result="blur"/>
     <feOffset in="blur" dx="0" dy="0" result="offsetBlur"/>
-    <feFlood flood-color="#B24CAA" flood-opacity="0.24" result="pinkGlow"/>
-    <feFlood flood-color="#3690DE" flood-opacity="0.24" result="blueGlow"/>
+    <feFlood flood-color="#A32E6B" flood-opacity="0.26" result="pinkGlow"/>
+    <feFlood flood-color="#2B8AC9" flood-opacity="0.26" result="blueGlow"/>
     <feComposite in="pinkGlow" in2="offsetBlur" operator="in" result="pinkBlur"/>
     <feComposite in="blueGlow" in2="offsetBlur" operator="in" result="blueBlur"/>
     <feMerge>
@@ -54,14 +54,14 @@
 </defs>
 
 <!-- 背景の超繊細なグラデーション -->
-<rect width="320" height="320" fill="url(#backgroundGradient)" opacity="0.035"/>
+<rect width="320" height="320" fill="url(#backgroundGradient)" opacity="0.04"/>
 
 <defs>
   <radialGradient id="backgroundGradient" cx="50%" cy="50%" r="68.5%">
-    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.018" />
-    <stop offset="38.2%" style="stop-color:#E070D8;stop-opacity:0.012" />
-    <stop offset="61.8%" style="stop-color:#C858C0;stop-opacity:0.008" />
-    <stop offset="100%" style="stop-color:#B24CAA;stop-opacity:0.005" />
+    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.02" />
+    <stop offset="38.2%" style="stop-color:#C060D0;stop-opacity:0.015" />
+    <stop offset="61.8%" style="stop-color:#9040B0;stop-opacity:0.01" />
+    <stop offset="100%" style="stop-color:#6020A0;stop-opacity:0.008" />
   </radialGradient>
 </defs>
 
