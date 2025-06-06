@@ -1,38 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
 <defs>
-  <!-- 深みのある病みの月のグラデーション -->
-  <linearGradient id="moonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" style="stop-color:#371566;stop-opacity:1" />
-    <stop offset="45%" style="stop-color:#521873;stop-opacity:1" />
-    <stop offset="75%" style="stop-color:#7A2272;stop-opacity:1" />
-    <stop offset="100%" style="stop-color:#A32E6B;stop-opacity:0.95" />
-  </linearGradient>
+  <!-- 月のグラデーション：黄金比を意識した配置 -->
+  <radialGradient id="moonGradient" cx="38.2%" cy="38.2%" r="85%">
+    <stop offset="0%" style="stop-color:#B24CAA;stop-opacity:1" />
+    <stop offset="12%" style="stop-color:#AC46A6;stop-opacity:1" />
+    <stop offset="24%" style="stop-color:#A640A2;stop-opacity:1" />
+    <stop offset="36%" style="stop-color:#9E389E;stop-opacity:1" />
+    <stop offset="48%" style="stop-color:#96309A;stop-opacity:1" />
+    <stop offset="60%" style="stop-color:#8E2896;stop-opacity:1" />
+    <stop offset="72%" style="stop-color:#822290;stop-opacity:1" />
+    <stop offset="84%" style="stop-color:#6A1E86;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#4A1A7A;stop-opacity:1" />
+  </radialGradient>
   
-  <!-- 鮮やかな鍵のグラデーション（前回の配色） -->
+  <!-- 鍵のグラデーション：精密な8段階遷移 -->
   <linearGradient id="keyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" style="stop-color:#5A2C99;stop-opacity:1" />
-    <stop offset="45%" style="stop-color:#4B45B9;stop-opacity:1" />
-    <stop offset="75%" style="stop-color:#3B69B9;stop-opacity:1" />
-    <stop offset="100%" style="stop-color:#2B8AC9;stop-opacity:0.98" />
+    <stop offset="0%" style="stop-color:#622EAA;stop-opacity:1" />
+    <stop offset="12.5%" style="stop-color:#5E36B0;stop-opacity:1" />
+    <stop offset="25%" style="stop-color:#5A3EB6;stop-opacity:1" />
+    <stop offset="37.5%" style="stop-color:#5646BC;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#5250C2;stop-opacity:1" />
+    <stop offset="62.5%" style="stop-color:#4C5CC8;stop-opacity:1" />
+    <stop offset="75%" style="stop-color:#4668CE;stop-opacity:1" />
+    <stop offset="87.5%" style="stop-color:#3E7CD6;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#3690DE;stop-opacity:0.98" />
   </linearGradient>
   
-  <!-- ダークネオングロー効果 -->
-  <filter id="darkNeonGlow" x="-20%" y="-20%" width="140%" height="140%">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+  <!-- 精密に調整されたグロー効果 -->
+  <filter id="refinedGlow" x="-24%" y="-24%" width="148%" height="148%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.45" result="blur"/>
     <feColorMatrix in="blur" type="matrix" values="
       1 0 0 0 0
       0 1 0 0 0
       0 0 1 0 0
-      0 0 0 4.5 -2" result="glow"/>
+      0 0 0 3.4 -1.25" result="glow"/>
     <feBlend in="SourceGraphic" in2="glow" mode="screen"/>
   </filter>
   
-  <!-- サイバーポップ光沢効果 -->
-  <filter id="cyberKawaiiShine">
-    <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" result="blur"/>
+  <!-- 最適化されたシャイン効果 -->
+  <filter id="optimizedShine" x="-21%" y="-21%" width="142%" height="142%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="1.35" result="blur"/>
     <feOffset in="blur" dx="0" dy="0" result="offsetBlur"/>
-    <feFlood flood-color="#A32E6B" flood-opacity="0.3" result="pinkGlow"/>
-    <feFlood flood-color="#2B8AC9" flood-opacity="0.3" result="blueGlow"/>
+    <feFlood flood-color="#B24CAA" flood-opacity="0.24" result="pinkGlow"/>
+    <feFlood flood-color="#3690DE" flood-opacity="0.24" result="blueGlow"/>
     <feComposite in="pinkGlow" in2="offsetBlur" operator="in" result="pinkBlur"/>
     <feComposite in="blueGlow" in2="offsetBlur" operator="in" result="blueBlur"/>
     <feMerge>
@@ -43,15 +53,29 @@
   </filter>
 </defs>
 
+<!-- 背景の超繊細なグラデーション -->
+<rect width="320" height="320" fill="url(#backgroundGradient)" opacity="0.035"/>
+
+<defs>
+  <radialGradient id="backgroundGradient" cx="50%" cy="50%" r="68.5%">
+    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.018" />
+    <stop offset="38.2%" style="stop-color:#E070D8;stop-opacity:0.012" />
+    <stop offset="61.8%" style="stop-color:#C858C0;stop-opacity:0.008" />
+    <stop offset="100%" style="stop-color:#B24CAA;stop-opacity:0.005" />
+  </radialGradient>
+</defs>
+
 <g transform="translate(0.000000,320.000000) scale(0.100000,-0.100000)">
   <!-- 月のシルエット -->
   <path d="M1451 3139 c-233 -27 -543 -145 -706 -269 -33 -25 -87 -67 -121 -93 -64 -48 -204 -202 -274 -300 -102 -143 -208 -398 -246 -592 -27 -140 -25 -485 4 -622 31 -142 73 -257 149 -403 143 -276 353 -492 618 -634 257 -139 455 -189 740 -189 300 0 536 66 801 224 302 179 544 483 646 814 47 150 44 160 -16 60 -67 -108 -131 -183 -241 -278 -110 -96 -225 -163 -363 -209 -266 -90 -497 -89 -762 5 -239 84 -425 228 -570 438 -125 183 -184 354 -196 571 -15 285 44 504 200 741 59 89 194 224 299 298 141 99 345 178 532 205 102 15 138 16 240 6 126 -11 241 -38 338 -77 78 -31 58 -9 -57 62 -310 192 -682 280 -1015 242z" 
     fill="url(#moonGradient)" 
-    filter="url(#darkNeonGlow)"/>
+    filter="url(#refinedGlow)"/>
+</g>
     
+<g transform="translate(0.000000,320.000000) scale(0.100000,-0.100000)">    
   <!-- 鍵のシルエット -->
   <path d="M2270 2584 c-176 -34 -292 -143 -336 -317 -20 -77 -14 -190 14 -264 l19 -51 -353 -354 c-195 -194 -357 -361 -360 -370 -7 -24 17 -66 68 -115 l43 -43 32 30 c18 17 36 30 42 30 5 0 43 -31 82 -70 40 -38 75 -70 78 -70 3 0 59 51 123 113 l118 113 -75 74 c-41 41 -75 80 -75 87 0 11 164 179 357 365 l62 60 64 -32 c51 -25 83 -33 145 -37 183 -13 338 82 421 257 23 49 26 67 26 170 0 110 -2 119 -32 180 -30 61 -104 146 -160 185 -60 42 -226 74 -303 59z m178 -241 c20 -10 50 -38 67 -61 27 -39 30 -52 30 -116 0 -64 -4 -78 -29 -114 -35 -52 -112 -92 -174 -92 -64 0 -137 42 -170 99 -50 86 -28 217 46 269 61 44 158 50 230 15z" 
     fill="url(#keyGradient)" 
-    filter="url(#cyberKawaiiShine)"/>
+    filter="url(#optimizedShine)"/>
 </g>
 </svg>
