@@ -6,7 +6,7 @@ ogImage: ../../assets/logo.webp
 
 ## 概要
 
-このガイドでは、Misskeyフォーク「[yamisskey](https://github.com/yamisskey/yamisskey/)」の開発手順について説明します。本番環境（[master](https://github.com/yamisskey/yamisskey/tree/master)）、テスト環境（[nayami](https://github.com/yamisskey/yamisskey/tree/nayami)）、開発環境（[muyami](https://github.com/yamisskey/yamisskey/tree/muyami)）の3つのブランチを使用した開発フローと、アップストリーム（[Misskey本体](https://github.com/misskey-dev/misskey/tree/master)）からの変更取り込み手順を解説します。
+このガイドでは、Misskeyフォーク「[yamisskey](https://github.com/yamisskey-dev/yamisskey/)」の開発手順について説明します。本番環境（[master](https://github.com/yamisskey-dev/yamisskey/tree/master)）、テスト環境（[nayami](https://github.com/yamisskey-dev/yamisskey/tree/nayami)）、開発環境（[muyami](https://github.com/yamisskey-dev/yamisskey/tree/muyami)）の3つのブランチを使用した開発フローと、アップストリーム（[Misskey本体](https://github.com/misskey-dev/misskey/tree/master)）からの変更取り込み手順を解説します。
 
 ## ブランチ構成と役割
 
@@ -181,7 +181,7 @@ git push origin master
   // nayamiブランチでは "2025.1.0-nayami-1.4.3" を使用
   // muyamiブランチでは "2025.1.0-muyami-1.4.3" を使用
   "repository": {
-    "url": "https://github.com/yamisskey/yamisskey.git"
+    "url": "https://github.com/yamisskey-dev/yamisskey.git"
   }
 }
 ```
