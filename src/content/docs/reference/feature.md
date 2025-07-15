@@ -273,6 +273,7 @@ ogImage: ../../assets/logo.webp
 - ユーザーがLTL/STL/GTLを非表示にできるように
 - ノートの予約投稿
 - 浮上タイムライン
+- チャンネルのピン止め
 - ListenBrainzウィジット
 - Jitsi Meetウィジット
 - アクティブユーザーウィジット
