@@ -6,14 +6,16 @@ ogImage: ../../assets/logo.webp
 
 ## 概要
 
-このガイドでは、Misskeyフォーク「[yamisskey](https://github.com/yamisskey-dev/yamisskey/)」の開発手順について説明します。本番環境（[master](https://github.com/yamisskey-dev/yamisskey/tree/master)）、テスト環境（[nayami](https://github.com/yamisskey-dev/yamisskey/tree/nayami)）、開発環境（[muyami](https://github.com/yamisskey-dev/yamisskey/tree/muyami)）の3つのブランチを使用した開発フローと、アップストリーム（[Misskey本体](https://github.com/misskey-dev/misskey/tree/master)）からの変更取り込み手順を解説します。
+このガイドでは、[Misskey](https://github.com/misskey-dev/misskey)フォーク「[yamisskey](https://github.com/yamisskey-dev/yamisskey/)」の開発手順について説明します。基本的な開発手順は[フォーク元の開発ガイド](https://github.com/misskey-dev/misskey/blob/develop/CONTRIBUTING.md#development)を参照してください。
+
+本番環境（[master](https://github.com/yamisskey-dev/yamisskey/tree/master)）、テスト環境（[nayami](https://github.com/yamisskey-dev/yamisskey/tree/nayami)）、開発環境（[muyami](https://github.com/yamisskey-dev/yamisskey/tree/muyami)）の3つのブランチを使用した開発フローと、アップストリーム（[Misskey本体](https://github.com/misskey-dev/misskey/tree/master)）からの変更取り込み手順を解説します。
 
 ## ブランチ構成と役割
 
 ### masterブランチ（本番環境）
 
 * [やみすきー](https://yami.ski/)の安定運用版として位置づけ
-* バージョン名には「yami」を使用（例: 2025.1.0-yami-1.4.3）
+* バージョン名には「yami」（やみ、闇）を使用（例: 2025.1.0-yami-1.4.3）
 * Misskeyの新機能は、やみすきーのコンセプト（プライバシー重視、心理的安全重視）に合致するものだけを選択的に取り入れる
 * 本番環境での安定した運用を重視
 
@@ -21,7 +23,7 @@ ogImage: ../../assets/logo.webp
 
 * [なやみすきー](https://na.yami.ski/)はテスト版として位置づけ
 * 開発完了した機能の検証用
-* バージョン名には「nayami」を使用（例: 2025.1.0-nayami-1.4.3）
+* バージョン名には「nayami」（なやみ、悩み）を使用（例: 2025.1.0-nayami-1.4.3）
 * 本番環境への反映前の最終検証を行う場所
 * ユーザーフィードバックの収集も行う
 
@@ -29,7 +31,7 @@ ogImage: ../../assets/logo.webp
 
 * 開発専用環境として位置づけ
 * サーバー常駐なしで開発者のローカル環境で動作
-* バージョン名には「muyami」を使用（例: 2025.1.0-muyami-1.4.3）
+* バージョン名には「muyami」（むやみ、無暗）を使用（例: 2025.1.0-muyami-1.4.3）
 * 新機能開発や実験的な機能の実装に使用
 * 自由な開発とイノベーションを促進
 
@@ -37,30 +39,15 @@ ogImage: ../../assets/logo.webp
 
 ### 必要な環境
 
-* Node.js v20以上
-* pnpm（パッケージマネージャー）
+* Node.js
+* pnpm
 * Git
 
-### 環境確認
+### 推奨開発環境
 
-```bash
-# Node.jsバージョン確認
-node -v
-
-# pnpmの有効化
-corepack enable
-```
-
-### Gitの初期設定
-
-```bash
-# 現在の設定確認
-git config --list | grep user
-
-# ユーザー名とメールアドレスの設定（未設定の場合）
-git config --global user.name "Your Name"
-git config --global user.email "your.email"
-```
+* Visual Studio Code
+* Docker
+* devcontainer
 
 ### リポジトリの準備
 
@@ -115,8 +102,10 @@ git checkout -b feat/新機能名
 
 # 変更の確認とテスト
 pnpm install
-pnpm run build
-pnpm run dev  # 開発サーバーの起動
+pnpm build
+pnpm build-misskey-js-with-types
+pnpm migrate
+pnpm dev
 
 # 変更のコミット
 git add .
@@ -186,7 +175,6 @@ git push origin master
 }
 ```
 
-
 2. 現在の状態のバックアップ
 
 ```bash
@@ -208,60 +196,17 @@ git checkout muyami
 git merge upstream/master
 ```
 
-#### 2. コンフリクト解決の優先順位
-
-```bash
-# 自動生成ファイル（upstreamを採用）
-git checkout --theirs packages/misskey-js/src/autogen/
-git add packages/misskey-js/src/autogen/
-
-# ロケールファイル
-git checkout --theirs locales/
-git add locales/
-
-# lockファイル
-git checkout --theirs pnpm-lock.yaml
-git add pnpm-lock.yaml
-
-# プライバシー機能（フォークの実装を維持）
-git checkout --ours packages/frontend/src/components/MkNote.vue
-git checkout --ours packages/frontend/src/components/MkPostForm.vue
-git add packages/frontend/src/components/Mk*.vue
-```
-
-#### 3. 開発環境での動作確認
-
-```bash
-pnpm install
-pnpm run build
-pnpm run dev
-```
-
-#### 4. テスト環境（nayami）への反映
+#### 2. テスト環境（nayami）への反映
 
 ```bash
 git checkout nayami
-git merge muyami --no-ff -m "merge: アップストリーム変更をテスト環境に反映"
+git cherry-pick -m 1 コミットID
 git push origin nayami
 ```
 
-#### 5. テスト環境での詳細検証
+#### 3. 本番環境（master）への反映
 
-以下の項目を重点的に確認：
-* プライバシー機能の動作確認
-* 新機能の正常動作
-* パフォーマンスの確認
-* インスタンス情報の制御機能
-* ノート自動削除機能
-* 投稿フォームのカスタマイズ
-
-#### 6. 本番環境（master）への反映
-
-```bash
-git checkout master
-git merge nayami --no-ff -m "merge: テスト済みアップストリーム変更を本番環境に反映"
-git push origin master
-```
+- GitHubでnayamiブランチからmasterブランチへのマージをプルリクエストします。
 
 ## 4. リリース管理
 
@@ -294,12 +239,12 @@ git checkout backup/[現在のバージョン]
 
 ### よくある問題と解決方法
 
-* ビルドエラー → `pnpm install` の再実行
+* ビルドエラー → `pnpm cleanall` → `pnpm install` の再実行
 * マイグレーションエラー → データベースのバックアップ確認
 * コンフリクト → 優先順位に従って解決
 * ブランチの混乱 → 各ブランチの役割を明確に意識
 
-## 6. ブランチ保護ルール（GitHub Branch Protection）
+## 6. ブランチ保護ルール
 
 ### masterブランチの保護設定
 masterブランチには以下の保護ルールを設定しています：
@@ -315,7 +260,7 @@ masterブランチには以下の保護ルールを設定しています：
 * nayamiブランチへのマージは十分なテスト後に行う
 * 他の開発者の作業を尊重し、必要に応じて事前に連絡する
 
-## 7. 継続的インテグレーション（CI）
+## 7. 継続的インテグレーション
 
 ### GitHub Actionsの役割
 やみすきーでは品質管理のためにGitHub Actionsを活用して継続的インテグレーション（CI）を実施しています。これにより以下のメリットがあります：
@@ -324,14 +269,6 @@ masterブランチには以下の保護ルールを設定しています：
 * 自動テスト実行によるバグの早期発見
 * ビルドエラーの検出
 * 本番環境への安全なデプロイ
-
-### CI設定
-* リポジトリのActionsタブでワークフローの実行状況を確認できます
-* 主要なワークフローは以下の通りです：
-  - `lint.yml` - コードスタイルと品質チェック
-  - `test-backend.yml` - バックエンドのテスト
-  - `test-frontend.yml` - フロントエンドのテスト
-  - `test-production.yml` - 本番環境想定のビルドテスト
 
 ### ブランチでのCI活用方法
 * **muyamiブランチ（開発環境）** - 開発中の変更が基本的な品質基準を満たすか確認
