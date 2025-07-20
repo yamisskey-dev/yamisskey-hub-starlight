@@ -285,6 +285,7 @@ SNSでよくある「フォロワー数で価値を測る」みたいな考え�
 > 
 > - [#いのちSOS：0120-061-338（24時間）](https://www.lifelink.or.jp/inochisos/)
 > - [チャイルドライン：0120-99-7777（16時〜21時）](https://childline.or.jp/tel/)
+> - [日本いのちの電話連盟：0570-783-556 (10時〜22時)](https://www.inochinodenwa.org/)
 > - [よりそいホットライン：0120-279-338（24時間）](https://www.since2011.net/yorisoi/)
 > - LINE相談：[友だち追加で「生きづらびっと」](https://yorisoi-chat.jp/)を検索
 
