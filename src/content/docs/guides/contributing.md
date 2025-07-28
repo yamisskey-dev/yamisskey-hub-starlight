@@ -161,14 +161,14 @@ git push origin master
 
 ### 準備作業
 
-```consol
+```bash
 git remote add misskey-fork-name https://github.com/misskey-fork-org-name/misskey-fork-name.git
 git fetch --all
 ```
 
 ### チェリーピック
 
-```
+```bash
 git cherry-pick コミットID
 ```
 
