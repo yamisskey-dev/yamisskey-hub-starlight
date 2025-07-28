@@ -132,7 +132,7 @@ git push origin muyami
 git checkout nayami
 
 # 開発完了した機能をマージ
-git merge muyami --no-ff -m "merge: 開発済み機能をテスト環境に反映"
+git merge muyami
 
 # package.jsonのバージョン更新（muyami → nayami）
 # エディタでpackage.jsonを開き、バージョン名を変更
@@ -148,7 +148,7 @@ git push origin nayami
 git checkout master
 
 # テスト済み機能をマージ
-git merge nayami --no-ff -m "merge: テスト済み機能を本番環境に反映"
+git merge nayami
 
 # package.jsonのバージョン更新（nayami → yami）
 # エディタでpackage.jsonを開き、バージョン名を変更
@@ -157,7 +157,22 @@ git merge nayami --no-ff -m "merge: テスト済み機能を本番環境に反�
 git push origin master
 ```
 
-## 3. アップストリームからの変更取り込み
+## 3. 他フォークから機能をcherry-pick
+
+### 準備作業
+
+```consol
+git remote add misskey-fork-name https://github.com/misskey-fork-org-name/misskey-fork-name.git
+git fetch --all
+```
+
+### チェリーピック
+
+```
+git cherry-pick コミットID
+```
+
+## 4. アップストリームからの変更取り込み
 
 ### 準備作業
 
@@ -200,7 +215,7 @@ git merge upstream/master
 
 ```bash
 git checkout nayami
-git cherry-pick -m 1 コミットID
+git merge muyami
 git push origin nayami
 ```
 
@@ -208,7 +223,7 @@ git push origin nayami
 
 - GitHubでnayamiブランチからmasterブランチへのマージをプルリクエストします。
 
-## 4. リリース管理
+## 5. リリース管理
 
 ### リリースタグの作成
 
@@ -225,7 +240,7 @@ git push origin --tags
 * nayami: 2025.1.0-nayami-x.x.x
 * muyami: 2025.1.0-muyami-x.x.x
 
-## 5. トラブルシューティング
+## 6. トラブルシューティング
 
 ### マージ失敗時の対応
 
@@ -244,7 +259,7 @@ git checkout backup/[現在のバージョン]
 * コンフリクト → 優先順位に従って解決
 * ブランチの混乱 → 各ブランチの役割を明確に意識
 
-## 6. ブランチ保護ルール
+## 7. ブランチ保護ルール
 
 ### masterブランチの保護設定
 masterブランチには以下の保護ルールを設定しています：
@@ -260,7 +275,7 @@ masterブランチには以下の保護ルールを設定しています：
 * nayamiブランチへのマージは十分なテスト後に行う
 * 他の開発者の作業を尊重し、必要に応じて事前に連絡する
 
-## 7. 継続的インテグレーション
+## 8. 継続的インテグレーション
 
 ### GitHub Actionsの役割
 やみすきーでは品質管理のためにGitHub Actionsを活用して継続的インテグレーション（CI）を実施しています。これにより以下のメリットがあります：
@@ -280,7 +295,7 @@ masterブランチには以下の保護ルールを設定しています：
 * テストが失敗した場合は、エラーを修正してから再度プッシュしてください
 * すべてのテストが通過するまでmasterブランチへのマージは行わないでください
 
-## 8. 注意事項
+## 9. 注意事項
 * 重要な変更前は必ずバックアップを作成
 * プライバシー機能に関する変更は特に慎重にテスト
 * パフォーマンスへの影響を必ず確認
