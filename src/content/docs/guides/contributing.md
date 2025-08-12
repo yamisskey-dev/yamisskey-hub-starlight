@@ -16,6 +16,7 @@ ogImage: ../../assets/logo.webp
 
 * [やみすきー](https://yami.ski/)の安定運用版として位置づけ
 * バージョン名には「yami」（やみ、闇）を使用（例: 2025.1.0-yami-1.4.3）
+* DockerイメージはGitHub Actionsでビルド、バージョン名タグ[Dockerイメージ](https://hub.docker.com/r/yamisskey/yamisskey/tags)をpull
 * Misskeyの新機能は、やみすきーのコンセプト（プライバシー重視、心理的安全重視）に合致するものだけを選択的に取り入れる
 * 本番環境での安定した運用を重視
 
@@ -23,6 +24,7 @@ ogImage: ../../assets/logo.webp
 
 * [なやみすきー](https://na.yami.ski/)はテスト版として位置づけ
 * 開発完了した機能の検証用
+* DockerイメージはGitHub Actionsでビルド、nayamiタグ[Dockerイメージ](https://hub.docker.com/r/yamisskey/yamisskey/tags)をpull
 * バージョン名には「nayami」（なやみ、悩み）を使用（例: 2025.1.0-nayami-1.4.3）
 * 本番環境への反映前の最終検証を行う場所
 * ユーザーフィードバックの収集も行う
@@ -31,6 +33,7 @@ ogImage: ../../assets/logo.webp
 
 * 開発専用環境として位置づけ
 * サーバー常駐なしで開発者のローカル環境で動作
+* `git pull`で反映を取り込んで、Dockerイメージを毎回ローカルビルド
 * バージョン名には「muyami」（むやみ、無暗）を使用（例: 2025.1.0-muyami-1.4.3）
 * 新機能開発や実験的な機能の実装に使用
 * 自由な開発とイノベーションを促進
@@ -239,6 +242,12 @@ git push origin --tags
 * master: 2025.1.0-yami-x.x.x
 * nayami: 2025.1.0-nayami-x.x.x
 * muyami: 2025.1.0-muyami-x.x.x
+
+### Dockerイメージの自動ビルド
+
+- masterブランチはGitHubでリリース後ビルド
+- nayamiブランチはpushするたびに自動ビルド
+- muyamiブランチは開発用なので自動ビルドなし
 
 ## 6. トラブルシューティング
 
