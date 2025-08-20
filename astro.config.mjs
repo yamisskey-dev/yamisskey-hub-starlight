@@ -11,7 +11,7 @@ export default defineConfig({
         src: './src/assets/logo.webp', // Add the logo for the site header
       },
       social: {
-        github: 'https://github.com/yamisskey/hub.yami.ski',
+        github: 'https://github.com/yamisskey-dev/yamisskey-hub-starlight',
       },
       sidebar: [
         {
