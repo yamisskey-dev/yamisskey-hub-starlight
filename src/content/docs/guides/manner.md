@@ -1,10 +1,9 @@
 ---
 title: 💜唯のやみかたガイド💜
 description: 心の居場所『やみすきー』で安心して過ごすための包括的なユーザーガイド
-ogImage: yamisskey-chan-yui.png
 ---
 
-![やみすきーちゃん（唯）](./yamisskey-chan-yui.png)
+![やみすきーちゃん（唯）](https://raw.githubusercontent.com/yamisskey-dev/yamisskey-assets/refs/heads/main/yui/yui-256x256.webp)
 
 ## はじめに（書いてみたよ） 💜
 
