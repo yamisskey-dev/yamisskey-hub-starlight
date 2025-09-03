@@ -225,7 +225,45 @@ git push origin nayami
 
 #### 3. 本番環境（master）への反映
 
-- GitHubでnayamiブランチからmasterブランチへのマージをプルリクエストします。
+##### 事前準備
+
+- `DIFFERENCE.md`のUnreleased項目に変更点を明記
+- `package.json`のversionプロパティをインクリメント
+
+##### リリースPR作成
+
+- GitHubで[Release Manager [Dispatch](https://github.com/yamisskey-dev/yamisskey/actions/workflows/release-with-dispatch.yml)をnayamiブランチから手動実行
+- `DIFFERENCE.md`のUnreleased項目がバージョン名に上書きされる
+- 自動的にnayami→masterのプルリクエストが作成される
+
+##### コンフリクト解決
+
+- PRで`package.json`のバージョンコンフリクトが発生
+- 🎯 "Create a new branch and commit updates" を選択
+- ブランチ名: release/v2025.7.0-yami-1.9.11 （対象バージョンに合わせて調整）
+- versionを正しいyami形式（例："2025.7.0-yami-1.9.11"）に編集
+- コミット後、PRが自動更新される
+
+🔧 コンフリクト解決の詳細手順
+> 1. PR画面で "Resolve conflicts" をクリック
+> 2. package.json を編集:
+>   "version": "2025.7.0-yami-1.9.11"
+> 3. ⭐ "Create a new branch and commit updates" を選択
+> 4. ブランチ名: release/v2025.7.0-yami-1.9.11
+> 5. "Commit changes" をクリック
+> 6. PRが自動更新され、コンフリクト解決完了
+
+##### 最終確認とマージ
+
+- 自動生成されたプルリクエストをレビュー
+- CIチェックの完了を確認
+- プルリクエストを承認してマージ
+
+##### 自動リリース
+
+- マージ後、[release-on-merge.yml](http://github.com/yamisskey-dev/yamisskey/actions/workflows/release-on-merge.yml)が自動実行
+- masterブランチのGitHub Releaseが自動作成
+- masterブランチのDockerイメージが自動生成・公開
 
 ## 5. リリース管理
 
