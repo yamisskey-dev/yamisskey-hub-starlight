@@ -232,7 +232,7 @@ git push origin nayami
 
 ##### リリースPR作成
 
-- GitHubで[Release Manager [Dispatch](https://github.com/yamisskey-dev/yamisskey/actions/workflows/release-with-dispatch.yml)をnayamiブランチから手動実行
+- GitHubで[Release Manager Dispatch](https://github.com/yamisskey-dev/yamisskey/actions/workflows/release-with-dispatch.yml)をnayamiブランチから手動実行
 - `DIFFERENCE.md`のUnreleased項目がバージョン名に上書きされる
 - 自動的にnayami→masterのプルリクエストが作成される
 
