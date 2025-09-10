@@ -210,14 +210,16 @@ git branch backup/[現在のバージョン] master
 #### 1. 開発ブランチ（muyami）への変更取り込み
 
 ```bash
-# 1. 上流のタグを取得
 git fetch upstream --tags --prune
-
-# 2. 作業ブランチに切り替え（例: 開発ブランチ）
 git checkout muyami
+git merge --no-ff --no-edit -S <tag-name>
+```
 
-# 3. 上流の安定タグを取り込む（必ずマージコミットを残す）
-git merge --no-ff --no-edit -S -m "upstream: merge tag <tag-name> (<commit-sha>)" <tag-name>
+※リカバリ方法
+```bash
+git add -A && git commit -m "upstream: resolve conflicts for <tag-name>"
+git log --merges --oneline -n 3
+git revert -m 1 <merge-commit-sha>
 ```
 
 #### 2. テスト環境（nayami）への反映
