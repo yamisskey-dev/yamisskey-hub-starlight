@@ -45,7 +45,7 @@ description: Misskeyフォークyamisskeyにおけるブランチ管理からリ
 
 * Node.js
 * pnpm
-* Git
+* Git (2.15以降、git worktree対応)
 
 ### 推奨開発環境
 
@@ -56,43 +56,73 @@ description: Misskeyフォークyamisskeyにおけるブランチ管理からリ
 ### リポジトリの準備
 
 ```bash
+# リポジトリのクローン
+git clone https://github.com/yamisskey-dev/yamisskey.git
+cd yamisskey
+
 # リモートの確認と追加
 git remote -v
 git remote add upstream https://github.com/misskey-dev/misskey.git
 
 # 最新状態への更新
-git fetch --all --prune
+git fetch --all --prune --tags
+```
 
-# 作業環境のクリーン化
-git status
-git stash -u  # 必要な場合
+### Git Worktreeによる環境構築
+
+yamisskeyでは、git worktreeを使用して複数のブランチを同時に管理します。これにより、ブランチ切り替え時の再ビルドを避け、効率的な開発が可能になります。
+
+```bash
+# メインリポジトリのディレクトリ構成
+# yamisskey/           (メインリポジトリ、masterブランチ)
+# yamisskey-nayami/    (テスト環境用worktree)
+# yamisskey-muyami/    (開発環境用worktree)
+
+# nayamiブランチ用のworktree作成
+git worktree add ../yamisskey-nayami nayami
+
+# muyamiブランチ用のworktree作成
+git worktree add ../yamisskey-muyami muyami
+
+# worktreeの確認
+git worktree list
+```
+
+#### 各worktreeでの初期設定
+
+```bash
+# nayami環境のセットアップ
+cd ../yamisskey-nayami
+pnpm install
+pnpm build
+pnpm build-misskey-js-with-types
+
+# muyami環境のセットアップ
+cd ../yamisskey-muyami
+pnpm install
+pnpm build
+pnpm build-misskey-js-with-types
 ```
 
 ## 2. 新しい開発フロー
 
-### ブランチの作成と管理
+### Git Worktreeを使った開発の利点
 
-```bash
-# masterブランチの最新化
-git checkout master
-git pull origin master
-
-# nayamiブランチ（テスト環境）の作成/更新
-git checkout -b nayami
-git push origin nayami
-
-# muyamiブランチ（開発環境）の作成/更新
-git checkout -b muyami
-git push origin muyami
-```
+* **高速な環境切り替え**: ブランチ切り替えによる再ビルドが不要
+* **並行開発**: 複数環境を同時に起動して動作確認可能
+* **独立した依存関係**: 各環境のnode_modulesが独立
+* **ビルド済みアセット保持**: 各環境のビルド結果が保持される
 
 ### 開発作業の基本フロー
 
 #### 1. 新機能開発（muyamiブランチ）
 
 ```bash
-# 開発ブランチへの切り替え
-git checkout muyami
+# muyami worktreeに移動
+cd ../yamisskey-muyami
+
+# 最新の変更を取得
+git pull origin muyami
 
 # 機能ごとのトピックブランチを作成
 git checkout -b feat/新機能名
@@ -101,15 +131,18 @@ git checkout -b feat/新機能名
 #### 2. 開発作業
 
 ```bash
+# muyami worktreeで作業
+cd ../yamisskey-muyami
+
 # 変更の実施
 # ...コーディング作業...
 
-# 変更の確認とテスト
-pnpm install
-pnpm build
-pnpm build-misskey-js-with-types
-pnpm migrate
+# 変更の確認とテスト（既にビルド済みの環境を利用）
 pnpm dev
+
+# 必要に応じて再ビルド
+pnpm build
+pnpm migrate
 
 # 変更のコミット
 git add .
@@ -119,6 +152,9 @@ git commit -m "feat: 機能の説明"
 #### 3. muyamiブランチへのマージ
 
 ```bash
+# muyami worktree内で作業継続
+cd ../yamisskey-muyami
+
 # muyamiブランチに戻る
 git checkout muyami
 
@@ -132,14 +168,20 @@ git push origin muyami
 #### 4. テスト環境への反映（nayamiブランチ）
 
 ```bash
-# テスト環境ブランチへの切り替え
-git checkout nayami
+# nayami worktreeに移動
+cd ../yamisskey-nayami
+
+# 最新の変更を取得
+git pull origin nayami
 
 # 開発完了した機能をマージ
 git merge muyami
 
 # package.jsonのバージョン更新（muyami → nayami）
 # エディタでpackage.jsonを開き、バージョン名を変更
+
+# 必要に応じてビルド
+pnpm build
 
 # テスト環境への反映
 git push origin nayami
@@ -148,14 +190,20 @@ git push origin nayami
 #### 5. 本番環境への反映（masterブランチ）
 
 ```bash
-# 本番環境ブランチへの切り替え
-git checkout master
+# メインリポジトリ（master）に移動
+cd ../yamisskey
+
+# 最新の変更を取得
+git pull origin master
 
 # テスト済み機能をマージ
 git merge nayami
 
 # package.jsonのバージョン更新（nayami → yami）
 # エディタでpackage.jsonを開き、バージョン名を変更
+
+# 必要に応じてビルド
+pnpm build
 
 # 本番環境への反映
 git push origin master
@@ -166,6 +214,10 @@ git push origin master
 ### 準備作業
 
 ```bash
+# 開発環境のworktreeで作業
+cd ../yamisskey-muyami
+
+# 他フォークをリモートに追加
 git remote add misskey-fork-name https://github.com/misskey-fork-org-name/misskey-fork-name.git
 git fetch --all
 ```
@@ -173,6 +225,8 @@ git fetch --all
 ### チェリーピック
 
 ```bash
+# muyami worktreeで実行
+cd ../yamisskey-muyami
 git cherry-pick コミットID
 ```
 
@@ -197,11 +251,14 @@ git cherry-pick コミットID
 2. 現在の状態のバックアップ
 
 ```bash
-git checkout muyami
+# 各worktreeでバックアップブランチを作成
+cd ../yamisskey-muyami
 git branch backup/[現在のバージョン] muyami
-git checkout nayami
+
+cd ../yamisskey-nayami
 git branch backup/[現在のバージョン] nayami
-git checkout master
+
+cd ../yamisskey
 git branch backup/[現在のバージョン] master
 ```
 
@@ -210,8 +267,13 @@ git branch backup/[現在のバージョン] master
 #### 1. 開発ブランチ（muyami）への変更取り込み
 
 ```bash
+# muyami worktreeで作業
+cd ../yamisskey-muyami
+
+# 上流の変更を取得
 git fetch upstream --tags --prune
-git checkout muyami
+
+# マージ実行
 git merge --no-ff --no-edit -S <tag-name>
 ```
 
@@ -225,8 +287,16 @@ git revert -m 1 <merge-commit-sha>
 #### 2. テスト環境（nayami）への反映
 
 ```bash
-git checkout nayami
+# nayami worktreeで作業
+cd ../yamisskey-nayami
+
+# muyamiの変更をマージ
 git merge muyami
+
+# ビルドとテスト
+pnpm build
+
+# リモートへ反映
 git push origin nayami
 ```
 
@@ -277,8 +347,10 @@ git push origin nayami
 ### リリースタグの作成
 
 ```bash
-# masterブランチでタグ作成
-git checkout master
+# メインリポジトリ（master）で作業
+cd ../yamisskey
+
+# タグ作成
 git tag -a '[新バージョン]' -m "Release [新バージョン]"
 git push origin --tags
 ```
@@ -297,9 +369,35 @@ git push origin --tags
 
 ## 6. トラブルシューティング
 
+### Git Worktree関連の問題
+
+#### worktreeの削除と再作成
+
+```bash
+# worktreeの削除
+git worktree remove ../yamisskey-muyami
+
+# 強制削除（変更がある場合）
+git worktree remove --force ../yamisskey-muyami
+
+# worktreeの再作成
+git worktree add ../yamisskey-muyami muyami
+```
+
+#### worktreeのクリーンアップ
+
+```bash
+# 不要になったworktreeの情報を削除
+git worktree prune
+
+# worktreeの状態確認
+git worktree list
+```
+
 ### マージ失敗時の対応
 
 ```bash
+# 該当worktreeで実行
 # マージの中断
 git merge --abort
 
@@ -309,10 +407,17 @@ git checkout backup/[現在のバージョン]
 
 ### よくある問題と解決方法
 
-* ビルドエラー → `pnpm cleanall` → `pnpm install` の再実行
-* マイグレーションエラー → データベースのバックアップ確認
-* コンフリクト → 優先順位に従って解決
-* ブランチの混乱 → 各ブランチの役割を明確に意識
+* **worktree間でのnode_modules共有エラー**
+  * 各worktreeで独立して `pnpm install` を実行
+  * `.gitignore` にnode_modulesが含まれていることを確認
+
+* **worktreeでのビルドエラー**
+  * 該当worktreeで `pnpm cleanall` → `pnpm install` の再実行
+  * ビルドキャッシュのクリア: `rm -rf built/`
+
+* **マイグレーションエラー** → データベースのバックアップ確認
+* **コンフリクト** → 優先順位に従って解決
+* **ブランチの混乱** → `git worktree list` で現在地を確認
 
 ## 7. ブランチ保護ルール
 
