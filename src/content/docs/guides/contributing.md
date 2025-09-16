@@ -104,14 +104,9 @@ pnpm build
 pnpm build-misskey-js-with-types
 ```
 
-## 2. 新しい開発フロー
+## 2. 開発フロー
 
-### git worktreeのメリット
-- 複数ブランチを同時に管理できる
-- ブランチ切り替え時の再ビルド不要
-- 各環境の依存関係が独立
-
-#### 1. 新機能開発（muyamiブランチ）
+### 1. 新機能開発（muyamiブランチ）
 
 ```bash
 # muyami worktreeに移動
@@ -124,7 +119,7 @@ git pull origin muyami
 git checkout -b feat/新機能名
 ```
 
-#### 2. 開発作業
+### 2. 開発作業
 
 ```bash
 # muyami worktreeで作業
@@ -145,7 +140,7 @@ git add .
 git commit -m "feat: 機能の説明"
 ```
 
-#### 3. muyamiブランチへのマージ
+### 3. muyamiブランチへのマージ
 
 ```bash
 # muyami worktree内で作業継続
@@ -161,7 +156,7 @@ git merge feat/新機能名
 git push origin muyami
 ```
 
-#### 4. テスト環境への反映（nayamiブランチ）
+### 4. テスト環境への反映（nayamiブランチ）
 
 ```bash
 # nayami worktreeに移動
@@ -183,7 +178,7 @@ pnpm build
 git push origin nayami
 ```
 
-#### 5. 本番環境への反映（masterブランチ）
+### 5. 本番環境への反映（masterブランチ）
 
 ```bash
 # メインリポジトリ（master）に移動
@@ -400,20 +395,6 @@ git merge --abort
 # バックアップからの復帰
 git checkout backup/[現在のバージョン]
 ```
-
-### よくある問題と解決方法
-
-* **worktree間でのnode_modules共有エラー**
-  * 各worktreeで独立して `pnpm install` を実行
-  * `.gitignore` にnode_modulesが含まれていることを確認
-
-* **worktreeでのビルドエラー**
-  * 該当worktreeで `pnpm cleanall` → `pnpm install` の再実行
-  * ビルドキャッシュのクリア: `rm -rf built/`
-
-* **マイグレーションエラー** → データベースのバックアップ確認
-* **コンフリクト** → 優先順位に従って解決
-* **ブランチの混乱** → `git worktree list` で現在地を確認
 
 ## 7. ブランチ保護ルール
 
