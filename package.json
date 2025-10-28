@@ -2,7 +2,7 @@
   "name": "yamisskey-hub-starlight",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@8.0.0",
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
