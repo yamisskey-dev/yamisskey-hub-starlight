@@ -1,5 +1,5 @@
 ---
-title: 資金運用ポリシー
+title: 資金ポリシー
 description: やみすきーサーバーの資金源、運営方針、透明性確保に関する規定
 ogImage: ../../assets/logo.webp
 ---
