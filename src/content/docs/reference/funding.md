@@ -40,12 +40,12 @@ ogImage: ../../assets/logo.webp
 月額支出：
 - Cloudflare WARP: 550円
 - Cloudflare Algo Smart Routing: $5 (約750円)
-- Playit.gg: $3 (約450円)
-- Linode: $5 (約750円)
-- ProtonMail: $7.99 (約1,200円)
-- Agames: 2,000円
+- Playit.gg Premium: $3 (約450円)
+- Linode Nanode: $5 (約750円)
+- ProtonMail Essential: $7.99 (約1,200円)
+- Agames Standard: 2,000円
 - Discord Nitro: 1,050円
-- VRChat: 1,500円
+- VRChat VRC+: 1,500円
 
 年額支出：
 - Njalla $60 (約9,000円/年、月割約750円)
