@@ -55,63 +55,68 @@ go install github.com/d-kuro/gwq/cmd/gwq@latest
 
 ### リポジトリ準備
 
-#### ghqを使ったリポジトリ管理
+#### ghqを使ったリポジトリ管理（閲覧用）
 
-ghqを使用することで、複数のリポジトリを一元管理できます。
+ghqは閲覧用として、Misskey本家や他フォークを管理します。
 
 ```bash
-# yamisskeyリポジトリの取得
+# yamisskey（参照用）
 ghq get https://github.com/yamisskey-dev/yamisskey.git
 
-# Misskey本家や他フォークの取得
+# Misskey本家（アップストリーム参照用）
 ghq get https://github.com/misskey-dev/misskey.git
+
+# 他フォーク（コード参照用）
 ghq get https://github.com/kokonect-link/cherrypick.git
-
-# yamisskeyリポジトリに移動
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey
-
-# リモート追加と更新
-git remote add upstream https://github.com/misskey-dev/misskey.git
-git fetch --all --prune --tags
+ghq get https://github.com/makochi-s/sharkey.git
 ```
 
-### git worktree構築
+### git worktree構築（開発用）
 
 #### gwqを使ったworktree管理
 
-yamisskeyでは、git worktreeを使用して複数のブランチを同時に管理します。gwqを使うことで、worktreeの作成・管理がより簡単になります。
+開発作業はすべてgwqで管理するworktreeで行います。ghqのリポジトリは閲覧専用として残します。
+
+```bash
+# ghqのリポジトリに移動（これがmasterブランチ）
+cd $(ghq root)/github.com/yamisskey-dev/yamisskey
+
+# リモート追加
+git remote add upstream https://github.com/misskey-dev/misskey.git
+git fetch --all --prune --tags
+
+# gwqで開発用worktreeを作成（masterはghqのリポジトリを使用）
+gwq add nayami
+gwq add muyami
+gwq list
+```
 
 #### pnpmとworktreeの相性
 
 pnpmはハードリンクで`node_modules`を共有するため、worktreeを複数作成しても容量はほぼ1つ分で済みます。npmやyarnでは各worktreeで完全に複製されるため、容量が倍増します。
 
-これにより、複数のClaude Codeエージェントを並列実行する際も、ディスク容量を気にせずworktreeを作成できます。
-
-```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey
-
-# gwqでworktreeを作成
-gwq create nayami
-gwq create muyami
-gwq list
-```
-
 #### 各worktreeでの初期設定
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.nayami
+cd $(gwq get master)
 pnpm install && pnpm build && pnpm build-misskey-js-with-types
 
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.muyami
+cd $(gwq get nayami)
+pnpm install && pnpm build && pnpm build-misskey-js-with-types
+
+cd $(gwq get muyami)
 pnpm install && pnpm build && pnpm build-misskey-js-with-types
 ```
 
-**Tips**: `gwq cd <ブランチ名>` でworktree間を素早く移動できます。
+**Tips**:
+- `gwq list` で開発用worktreeの一覧を確認
+- `gwq get <ブランチ名>` でworktreeのパスを取得
+- ghqは閲覧用、gwqは開発用として分離
 
 ## 開発フロー
 
 ### 1. 新機能開発（muyamiブランチ）
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.muyami
+cd $(gwq get muyami)
 git pull origin muyami
 git checkout -b feat/新機能名
 ```
@@ -135,7 +140,7 @@ git push origin muyami
 
 ### 4. テスト環境への反映（nayamiブランチ）
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.nayami
+cd $(gwq get nayami)
 git pull origin nayami
 git merge muyami
 # package.jsonのバージョン更新（muyami → nayami）
@@ -145,7 +150,7 @@ git push origin nayami
 
 ### 5. 本番環境への反映（masterブランチ）
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey
+cd $(gwq get master)
 git pull origin master
 git merge nayami
 # package.jsonのバージョン更新（nayami → yami）
@@ -158,25 +163,25 @@ git push origin master
 複数の機能を並行開発する場合、機能ごとにworktreeを作成します。
 
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.muyami
+cd $(ghq root)/github.com/yamisskey-dev/yamisskey
 
 # 機能ごとのworktreeを作成
-gwq create feat/feature-a
-gwq create feat/feature-b
+gwq add feat/feature-a
+gwq add feat/feature-b
 
 # 各worktreeで初期化
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.feat-feature-a
+cd $(gwq get feat/feature-a)
 pnpm install && pnpm build
 
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.feat-feature-b
+cd $(gwq get feat/feature-b)
 pnpm install && pnpm build
 
 # 各worktreeでVSCodeを開く
-code $(ghq root)/github.com/yamisskey-dev/yamisskey.feat-feature-a
-code $(ghq root)/github.com/yamisskey-dev/yamisskey.feat-feature-b
+code $(gwq get feat/feature-a)
+code $(gwq get feat/feature-b)
 
 # 開発完了後、muyamiにマージ
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.muyami
+cd $(gwq get muyami)
 git merge feat/feature-a
 git merge feat/feature-b
 git push origin muyami
@@ -191,12 +196,12 @@ pnpmのハードリンク共有により、worktreeを増やしても容量は�
 ## 他フォークから機能をcherry-pick
 
 ```bash
-# 他フォークのコミットログを確認
+# ghqで管理している他フォークのコミットログを確認（閲覧用）
 cd $(ghq root)/github.com/kokonect-link/cherrypick
 git log --oneline -20
 
-# yamisskey muyami worktreeに移動
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.muyami
+# yamisskey muyami worktreeに移動（開発用）
+cd $(gwq get muyami)
 
 # 他フォークをリモートに追加（初回のみ）
 git remote add cherrypick $(ghq root)/github.com/kokonect-link/cherrypick
@@ -215,13 +220,13 @@ git cherry-pick --continue
 ### 準備：バックアップ作成
 
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.muyami
+cd $(gwq get muyami)
 git branch backup/$(date +%Y%m%d) muyami
 
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.nayami
+cd $(gwq get nayami)
 git branch backup/$(date +%Y%m%d) nayami
 
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey
+cd $(gwq get master)
 git branch backup/$(date +%Y%m%d) master
 ```
 
@@ -229,7 +234,7 @@ git branch backup/$(date +%Y%m%d) master
 
 #### 1. 開発ブランチ（muyami）への変更取り込み
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.muyami
+cd $(gwq get muyami)
 git fetch upstream --tags --prune
 git merge --no-ff --no-edit -S <tag-name>
 
@@ -239,7 +244,7 @@ git add -A && git commit -m "upstream: resolve conflicts for <tag-name>"
 
 #### 2. テスト環境（nayami）への反映
 ```bash
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey.nayami
+cd $(gwq get nayami)
 git merge muyami
 pnpm build
 git push origin nayami
@@ -259,10 +264,9 @@ git push origin nayami
 
 ```bash
 # worktreeの削除と再作成
-cd $(ghq root)/github.com/yamisskey-dev/yamisskey
 gwq remove muyami          # 削除
 gwq remove --force muyami  # 強制削除
-gwq create muyami          # 再作成
+gwq add muyami             # 再作成（ghqのリポジトリから）
 gwq list                   # 状態確認
 
 # worktreeのクリーンアップ
@@ -271,11 +275,11 @@ git worktree prune
 
 ### マージ失敗時の対応
 ```bash
-git merge --abort                            # マージ中断
-git checkout backup/[現在のバージョン]      # バックアップから復帰
+git merge --abort                        # マージ中断
+git checkout backup/[現在のバージョン]  # バックアップから復帰
 ```
 
-### ghq関連の問題
+### ghq関連の問題（閲覧用リポジトリ）
 ```bash
 ghq root                                     # ルートディレクトリ確認
 rm -rf $(ghq root)/github.com/yamisskey-dev/yamisskey  # リポジトリ削除
