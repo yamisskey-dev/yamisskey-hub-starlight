@@ -57,7 +57,7 @@ go install github.com/d-kuro/gwq/cmd/gwq@latest
 
 #### ghqを使ったリポジトリ管理（閲覧用）
 
-ghqは閲覧用として、Misskey本家や他フォークを管理します。
+[ghq](https://github.com/x-motemen/ghq)は閲覧用として、Misskey本家や他フォークを管理します。
 
 ```bash
 # yamisskey（参照用）
@@ -68,14 +68,13 @@ ghq get https://github.com/misskey-dev/misskey.git
 
 # 他フォーク（コード参照用）
 ghq get https://github.com/kokonect-link/cherrypick.git
-ghq get https://github.com/makochi-s/sharkey.git
 ```
 
 ### git worktree構築（開発用）
 
 #### gwqを使ったworktree管理
 
-開発作業はすべてgwqで管理するworktreeで行います。ghqのリポジトリは閲覧専用として残します。
+開発作業はすべて[gwq](https://github.com/d-kuro/gwq)で管理するworktreeで行います。ghqのリポジトリは閲覧専用として残します。
 
 ```bash
 # ghqのリポジトリに移動（これがmasterブランチ）
