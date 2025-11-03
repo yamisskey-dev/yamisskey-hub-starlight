@@ -49,7 +49,7 @@ go install github.com/d-kuro/gwq/cmd/gwq@latest
 ```
 
 ### 推奨開発環境
-- Visual Studio Code
+- Visual Studio Code (version 1.103以降、`git.detectWorktrees: true`でGUI管理可能)
 - Docker
 - devcontainer (Claude Codeが設定済み)
 
@@ -110,6 +110,8 @@ pnpm install && pnpm build && pnpm build-misskey-js-with-types
 - `gwq list` で開発用worktreeの一覧を確認
 - `gwq get <ブランチ名>` でworktreeのパスを取得
 - ghqは閲覧用、gwqは開発用として分離
+- VSCodeでは「ソース管理」→「Worktrees」からGUI操作も可能
+- DevContainerで権限エラーが出る場合：`sudo chown -R $(whoami) /workspaces/yamisskey.worktrees`
 
 ## 開発フロー
 
@@ -157,9 +159,9 @@ pnpm build
 git push origin master
 ```
 
-## gwqとClaude Codeを使った並列開発
+## Claude Codeを使った並列開発
 
-複数の機能を並行開発する場合、機能ごとにworktreeを作成します。
+複数の機能を並行開発する場合、機能ごとにworktreeを作成します。pnpmのハードリンク共有により、worktreeを増やしても容量はほぼ増えません。
 
 ```bash
 cd $(ghq root)/github.com/yamisskey-dev/yamisskey
@@ -190,7 +192,7 @@ gwq remove feat/feature-a
 gwq remove feat/feature-b
 ```
 
-pnpmのハードリンク共有により、worktreeを増やしても容量はほぼ増えません。同一ファイルを複数worktreeで編集する場合は、マージ時のコンフリクトに注意してください。
+**Tips**: VSCodeのGUIを使う場合は「ソース管理」→「Worktrees」からworktreeを作成し、「Open Worktree in New Window」で各ウィンドウを開けます。同一ファイルを複数worktreeで編集する場合は、マージ時のコンフリクトに注意してください。
 
 ## 他フォークから機能をcherry-pick
 
