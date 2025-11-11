@@ -489,14 +489,17 @@ GDPR 圏、EU 圏に居住する利用者に関しては日本国法の範囲内
 
 # 付則
 
-## 制定日
+## 制定日・改定履歴
+
+**変更履歴の追跡について**: 2025年3月19日以降の改定については、各改定日にGitHubコミットへのリンクを設定しています。コミットの差分を確認することで、具体的な変更内容を追跡できます。
+
 - 2024年7月18日　初版発行
 - 2024年8月02日　改定
 - 2024年10月8日　改定
 - 2024年11月7日　改定
 - 2024年11月26日　改定
-- 2025年3月19日　改定
-- 2025年4月5日　改定
-- 2025年9月23日　改定
-- 2025年11月3日　改定
-- 2025年11月11日　改定
+- 2025年3月19日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/e94425d0019bfa0f3708087b485ba85239b9e702)：メンタルファーストとプライバシーファーストの理念を反映した全面改訂
+- 2025年4月5日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/26d2a5a99489f4d418dc37def5a85428160174a0)：登録拒否事由の整理
+- 2025年9月23日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/06742131eb0d4623a452888fabe26dd724e45964)：年齢制限を13歳未満に引き上げ
+- 2025年11月3日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/fbf373f8e7ec7ecd5e9fb8754238382430983770)：年齢制限を12歳未満に戻す
+- 2025年11月11日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/8ebf5094010894054e9525bf407a381f71af9769)：運営権限の制限と透明性の強化

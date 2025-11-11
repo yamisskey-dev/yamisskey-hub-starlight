@@ -300,12 +300,16 @@ ogImage: ../../assets/logo.webp
 
 ### 第4条 改定履歴
 
+#### 変更履歴の追跡について
+2025年1月1日以降の改定については、各改定日にGitHubコミットへのリンクを設定しています。コミットの差分を確認することで、具体的な変更内容を追跡できます。
+
 #### 制定・改定経過
 - 2024 年 10 月 14 日　初版発行
 - 2024 年 11 月 7 日　改定
-- 2025 年 1 月 1 日　改定
-- 2025 年 1 月 12 日　改定
-- 2025 年 1 月 21 日　改定
-- 2025 年 9 月 28 日　改定
-- 2025 年 11 月 3 日　改定
-- 2025 年 11 月 11 日　改定
+- 2024 年 12 月 08 日　改定
+- 2025 年 1 月 1 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/dacece4cabe4d775d55de037a83b9425f47edc15)：運営の不介入原則を明記
+- 2025 年 1 月 12 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/aec01581d0ea0bfda7728794225e9ea30c203b66)：管理人が複数いる場合の責任の所在を明記
+- 2025 年 1 月 21 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/b97cfb7d4803a5928a98fe0a2d4b835212fb3f92)：精神的資源、心理的安全性、承認弱者に関する考察を追加
+- 2025 年 9 月 28 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/9a52ba7595a281282389219235ce7b27bea957cb)：やり直しの機会を原則として認める方針を追加、永久出禁の例外規定と基準を明記
+- 2025 年 11 月 3 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/1a7ce2612653e9d9cd93c41778d1aa554334835a)：サバルタン概念の統合と文書構造の改善
+- 2025 年 11 月 11 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/8ebf5094010894054e9525bf407a381f71af9769)：運営権限の制限と恣意的解釈の防止
