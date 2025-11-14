@@ -367,3 +367,4 @@ Misskeyの連合機能により、以下の情報が他の連合サーバーと�
 - 2024年12月08日　改定
 - 2025年3月19日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/2106bae10615f0e47e6ef3ee3753a09c16bd3f4f)：プライバシーファーストの理念に基づく全面改定
 - 2025年5月18日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/abaa936aa72f9150b2882e75621fbbe22d40170b)：第0条（注意事項）を追加
+- 2025年11月14日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/3c5919f)：運営組織をZER0 DAOに変更
