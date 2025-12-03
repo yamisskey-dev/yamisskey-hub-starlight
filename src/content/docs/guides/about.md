@@ -42,4 +42,4 @@ description: メンタルファーストとプライバシーファーストを�
 - 2024 年 10 月 8 日　改定
 - 2024 年 12 月 08 日　改定
 - 2025 年 9 月 28 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/ec0c9d839890f2da7c2d2840866d283233447929)
-- 2025 年 11 月 3 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/1a7ce2612653e9d9cd93c41778d1aa554334835a)：サバルタン概念の統合と文書構造の改善
+- 2025 年 11 月 3 日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/1a7ce2612653e9d9cd93c41778d1aa554334835a)：文書構造の改善
