@@ -1,6 +1,8 @@
 ---
 title: 💜唯のやみかたガイド💜
 description: 心の居場所『やみすきー』で安心して過ごすための包括的なユーザーガイド
+sidebar:
+  order: 4
 ---
 
 ![やみすきーちゃん（唯）](https://raw.githubusercontent.com/yamisskey-dev/yamisskey-assets/refs/heads/main/yui/yui-256x256.webp)

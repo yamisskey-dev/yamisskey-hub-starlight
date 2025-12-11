@@ -2,6 +2,8 @@
 title: プライバシーポリシー
 description: 当サーバーにおける個人情報の取り扱い、収集目的、第三者提供条件および利用者の権利に関する規定
 ogImage: ../../assets/logo.webp
+sidebar:
+  order: 2
 ---
 
 ## はじめに

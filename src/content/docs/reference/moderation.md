@@ -2,6 +2,8 @@
 title: モデレーション原則
 description: 承認弱者の居場所を守るための心理的安全性とプライバシー保護を重視したモデレーション原則
 ogImage: ../../assets/logo.webp
+sidebar:
+  order: 3
 ---
 
 ## 前文

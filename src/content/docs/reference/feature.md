@@ -1,7 +1,9 @@
 ---
-title: やみすきーの特徴一覧
+title: やみすきーの特徴
 description: やみすきーのプライバシー保護機能・ユーザー設定・ロール体系と独自改変点の詳細解説
 ogImage: ../../assets/logo.webp
+sidebar:
+  order: 4
 ---
 
 ## プライバシー保護
