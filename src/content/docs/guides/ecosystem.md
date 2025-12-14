@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-## YAMIエコシステムとは
+## YAMIエコシステム
 
 [YAMI DAO](https://dao.yami.ski/) が展開するオルタナティブなコミュニティ——デジタル・コミューン——です。
 
