@@ -73,4 +73,3 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 | サービス | 特徴 |
 |---------|------|
 | [Yamix](https://github.com/yamisskey-dev/yamix) | メンタルヘルス当事者向けコミュニティ。かつての「menhera.jp」の精神を復興する独自開発プロジェクト |
-| [Yamii](https://github.com/yamisskey-dev/yamii) | 人生相談チャットBotのAPIサーバー |
