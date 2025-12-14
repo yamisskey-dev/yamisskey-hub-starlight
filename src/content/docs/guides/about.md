@@ -17,7 +17,7 @@ sidebar:
 
 ## 独自フォーク
 
-病みと闇を大切にするやみすきーは、これらの理念を実現するため、独自機能を追加した [Misskey フォーク Yamisskey](https://github.com/yamisskey-dev/yamisskey) を使用しています。
+病みと闇を大切にするやみすきーは、これらの理念を実現するため、【独自機能】を追加した [Misskey フォーク Yamisskey](https://github.com/yamisskey-dev/yamisskey) を使用しています。
 
 ## 制定日・改定履歴
 
