@@ -36,7 +36,7 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 | サービス | 特徴 |
 |---------|------|
 | [Element](https://chat.yami.ski) | Matrixプロトコルによる分散型チャット。E2EE対応。LINEやSlackの代替 |
-| [CryptPad](https://pad.yami.ski) | E2EE対応の共同編集スイート。Google DocsやNotionの代替 |
+| [CryptPad](https://pad.yami.ski) | E2EE対応のオフィススイート。ドキュメント・スプレッドシート・スライドを共同編集可能 |
 
 ### クローズドコミュニティ
 
@@ -44,9 +44,9 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 
 | サービス | 特徴 |
 |---------|------|
+| [Outline](https://wiki.yami.ski) | YAMI DAOの内部ドキュメント管理。ログイン制のナレッジベース |
 | [Discord](https://discord.gg/WMgzEBvr8b) | YAMI DAOの会議所。承認制の招待制空間 |
 | [VRChat](https://vrc.group/YMSKY.5787) | バーチャル空間でのコミュニティ。フォロワー数による序列がなく、身体性を伴う交流が可能 |
-| [Outline](https://wiki.yami.ski) | YAMI DAOの内部ドキュメント管理。ログイン制のナレッジベース |
 
 ### ゲーム・娯楽
 
@@ -57,12 +57,20 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 | [Minecraft](minecraft://play?server=mmc.yami.ski:1373) | Java/Bedrock両対応。サーバー管理やプラグイン開発を通じた技術学習の機会も |
 | [CTFd](https://ctf.yami.ski) | セキュリティを学ぶCTFプラットフォーム。競争しながら知見を共有し合う |
 
-### 開発中・構築中
+### 構築中
 
-コミュニティのニーズに応えるため、新しいサービスの導入・開発を進めています。
+既存のオープンソースプロジェクトを導入予定。
 
 | サービス | 特徴 |
 |---------|------|
-| Yamix | メンタルヘルス当事者向けコミュニティ。かつての「menhera.jp」の精神を復興する独自開発プロジェクト |
 | Nostr | 中央サーバーを持たない分散型SNSプロトコル。検閲耐性が高い |
-| Jitsi | セルフホスト可能なビデオ会議。Zoom/Google Meetの代替 |
+| Jitsi | セルフホスト可能なビデオ会議。外部サーバーを経由せず、アカウント不要で利用可能 |
+
+### 開発中
+
+コミュニティのニーズに応える独自開発プロジェクト。
+
+| サービス | 特徴 |
+|---------|------|
+| [Yamix](https://github.com/yamisskey-dev/yamix) | メンタルヘルス当事者向けコミュニティ。かつての「menhera.jp」の精神を復興する独自開発プロジェクト |
+| [Yamii](https://github.com/yamisskey-dev/yamii) | 人生相談チャットBotのAPIサーバー |
