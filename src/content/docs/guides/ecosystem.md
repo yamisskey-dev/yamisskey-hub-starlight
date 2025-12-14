@@ -37,7 +37,6 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 |---------|------|
 | [Element](https://chat.yami.ski) | Matrixプロトコルによる分散型チャット。E2EE対応。LINEやSlackの代替 |
 | [CryptPad](https://pad.yami.ski) | E2EE対応の共同編集スイート。Google DocsやNotionの代替 |
-| [Outline](https://wiki.yami.ski) | チーム向けナレッジベース。YAMI DAOの内部ドキュメント管理にも使用 |
 
 ### クローズドコミュニティ
 
@@ -47,6 +46,7 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 |---------|------|
 | [Discord](https://discord.gg/WMgzEBvr8b) | YAMI DAOの会議所。承認制の招待制空間 |
 | [VRChat](https://vrc.group/YMSKY.5787) | バーチャル空間でのコミュニティ。フォロワー数による序列がなく、身体性を伴う交流が可能 |
+| [Outline](https://wiki.yami.ski) | YAMI DAOの内部ドキュメント管理。ログイン制のナレッジベース |
 
 ### ゲーム・娯楽
 
