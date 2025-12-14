@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-やみすきーは、オープンソースのプラットフォーム Misskey のサーバーのひとつです。
+やみすきーは、オープンソースのプラットフォーム [Misskeyのサーバー](https://misskey-hub.net/ja/servers/)のひとつです。
 
 ## メンタルファースト
 
