@@ -1,5 +1,5 @@
 ---
-title: 💜唯のやみかたガイド💜
+title: 唯のやみかた
 description: 心の居場所『やみすきー』で安心して過ごすための包括的なユーザーガイド
 sidebar:
   order: 4
