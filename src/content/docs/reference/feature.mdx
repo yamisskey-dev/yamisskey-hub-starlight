@@ -6,7 +6,7 @@ sidebar:
   order: 4
 ---
 
-import { Badge } from '@astrojs/starlight/components';
+import { Badge, Aside } from '@astrojs/starlight/components';
 
 export const Original = () => <Badge text="独自機能" variant="tip" />;
 
@@ -38,11 +38,12 @@ export const Original = () => <Badge text="独自機能" variant="tip" />;
 | アカウント削除 | ❌ | ❌ | ❌ | ✅ | ❌ |
 | 承認制の審査 | ❌ | ❌ | ❌ | ✅ | ✅ |
 
-**ポイント:**
+<Aside type="note" title="ポイント">
 - 開発者・DAO参加者はサービス内の情報を閲覧できません
 - IPアドレスは保存せず、リアルタイム確認のみ可能
 - 非公開のフォロー/フォロワーはモデレーターでも閲覧不可<Original />
 - アクセス解析ツールによる個人情報収集は行いません
+</Aside>
 
 ### 一般ユーザーの閲覧範囲
 
@@ -62,9 +63,10 @@ export const Original = () => <Badge text="独自機能" variant="tip" />;
 | ファイル | ✅ | ❌ |
 | 連合状況 | ❌ | ❌ |
 
-**ポイント:**
+<Aside type="note" title="ポイント">
 - 未ログインユーザーにはほぼすべての情報が非公開
 - 連合状況は一般ユーザーには非公開<Original />
+</Aside>
 
 ### VPN・Torの利用
 
@@ -143,7 +145,7 @@ export const Original = () => <Badge text="独自機能" variant="tip" />;
 | センシティブなメディアの表示 | 隠す（確認後に表示） |
 | カスタムフォント | Kosugi Maru |
 
-### <Original />の初期設定
+### 心理的安全<Original />の初期設定
 
 | 設定項目 | 初期値 |
 |----------|--------|
@@ -250,7 +252,9 @@ export const Original = () => <Badge text="独自機能" variant="tip" />;
 | フォロワー限定 | やみTL（フォロワーのみ） | ❌ |
 | ダイレクト | 指定ユーザーのみ | ❌ |
 
-**重要:** やみノートは連合ありでも信頼済みサーバーにのみ配送され、すべてリノート不可です。
+<Aside type="caution" title="重要">
+やみノートは連合ありでも信頼済みサーバーにのみ配送され、すべてリノート不可です。
+</Aside>
 
 ### DMの扱い
 
@@ -266,10 +270,11 @@ export const Original = () => <Badge text="独自機能" variant="tip" />;
 
 すべてのユーザーに適用される基本設定です。セキュリティとプライバシー保護のため、**最小権限の原則**で設計されています。
 
-**ポイント:**
+<Aside type="note" title="ポイント">
 - LTL/GTL/やみTL、パブリック投稿、検索などはデフォルト無効（コンディショナルロールで有効化）
 - フォロー/フォローされる、アイコン更新、広告非表示などは有効
 - 各種インポート、招待コード発行、フォロー解除/ブロック通知は無効
+</Aside>
 
 #### 詳細設定
 
