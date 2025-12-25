@@ -538,4 +538,4 @@ GDPR 圏、EU 圏に居住する利用者に関しては日本国法の範囲内
 - 2025年11月3日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/fbf373f8e7ec7ecd5e9fb8754238382430983770)：年齢制限を12歳未満に戻す
 - 2025年11月11日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/8ebf5094010894054e9525bf407a381f71af9769)：運営権限の制限と透明性の強化
 - 2025年11月16日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/11bdcfa)：運営組織をYAMI DAOに変更
-- 2025年12月25日　改定：第14条にライセンス制限・AI学習禁止条項を追加（X対抗条項）
+- 2025年12月25日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/bd93b2e)：第14条にライセンス制限・AI学習禁止条項を追加（X対抗条項）
