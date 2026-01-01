@@ -542,4 +542,4 @@ YAMI DAO傘下の各サービス間では、以下のデータ分離原則が適
 - 2025年5月18日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/abaa936aa72f9150b2882e75621fbbe22d40170b)：第0条（注意事項）を追加
 - 2025年11月16日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/11bdcfa)：運営組織をYAMI DAOに変更
 - 2025年12月25日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/bd93b2e)：第11条（データ主権の宣言）・第12条（学術研究への協力）・第13条（運営組織との関係）を新設
-- 2026年1月1日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/abaa1cc)：第7条3項（バックアップの取り扱い）を新設、第11条5項を具体化
+- 2026年1月1日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/a3aab62)：第7条3項（バックアップの取り扱い）を新設、第11条5項を具体化
