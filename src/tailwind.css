@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --sl-font: 'M PLUS 1p', 'M PLUS Rounded 1c', sans-serif;
+  --sl-font-system-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
