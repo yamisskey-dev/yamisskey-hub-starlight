@@ -232,4 +232,4 @@ sidebar:
 - 2025年9月28日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/9a52ba7595a281282389219235ce7b27bea957cb)：やり直しの機会を原則として認める方針を追加、永久出禁の例外規定と基準を明記
 - 2025年11月3日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/1a7ce2612653e9d9cd93c41778d1aa554334835a)：サバルタン概念の統合と文書構造の改善
 - 2025年11月11日　[改定](https://github.com/yamisskey-dev/yamisskey-hub-starlight/commit/8ebf5094010894054e9525bf407a381f71af9769)：運営権限の制限と恣意的解釈の防止
-- 2026年1月22日　全面改定：倫理的原則に基づく厳格解釈への移行、4原則の導入、禁止事項の限定列挙、許容事項の明示、運営者への平等適用、YAMIIの導入、DAO投票による改定手続きの導入
+- 2026年1月22日　全面改定：倫理的原則に基づく厳格解釈への移行、4原則の導入、禁止事項の限定列挙、許容事項の明示、運営者への平等適用、DAO投票による改定手続きの導入
