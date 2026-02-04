@@ -3,7 +3,7 @@ title: 利用規約
 description: やみすきーの利用条件、禁止事項、権利関係および免責事項を定めた法的規約
 ogImage: ../../assets/logo.webp
 sidebar:
-  order: 1
+  order: 2
 ---
 
 ## はじめに

@@ -2,7 +2,7 @@
 title: 運営体制と権限
 description: やみすきーの運営体制、役割、権限、責任の詳細仕様
 sidebar:
-  order: 4
+  order: 6
 ---
 
 ## 前文
