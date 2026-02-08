@@ -1,0 +1,43 @@
+---
+title: Minecraft
+description: YAMIエコシステムのMinecraftサーバーへの接続方法と技術構成
+sidebar:
+  order: 7
+---
+
+import { Aside, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<Aside>どちらのエディションでも同じサーバーに繋がります。</Aside>
+
+## Bedrock Edition
+
+プレイ > サーバー > サーバーを追加
+
+- 「サーバーアドレス」を `mmc.yami.ski`
+- 「ポート」を `1373`
+
+## Java Edition
+
+マルチプレイをクリック
+
+- 「バージョン」`1.21.1` をインストール
+- 「サーバーアドレス」を `mc.yami.ski`
+
+## サーバー構成（PaperMC + Geyser/Floodgate）
+
+### 概要
+
+- **サーバーソフトウェア**: PaperMC（高性能なSpigotフォーク）
+- **クロスプラットフォーム対応**: Geyser + Floodgate
+- **コンテナ化**: Docker + Docker Compose
+- **管理ツール**: Portainer
+- **ネットワーク**: PlayIt（トンネリング）- オプション
+
+### 参考リンク
+
+<CardGrid>
+  <LinkCard title="PaperMC" href="https://papermc.io/" />
+  <LinkCard title="Geyser" href="https://geysermc.org/" />
+  <LinkCard title="Floodgate" href="https://github.com/GeyserMC/Floodgate" />
+  <LinkCard title="itzg/minecraft-server" href="https://github.com/itzg/docker-minecraft-server" />
+</CardGrid>
