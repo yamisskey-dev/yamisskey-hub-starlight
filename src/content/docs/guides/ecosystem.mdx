@@ -5,7 +5,8 @@ sidebar:
   order: 1
 ---
 
-import { LinkCard, CardGrid, Badge } from '@astrojs/starlight/components';
+import { CardGrid, Badge } from '@astrojs/starlight/components';
+import ServiceCard from '../../../components/ServiceCard.astro';
 
 多くのサービスはやみすきーアカウントがなくても利用できますが、一部のクローズドサービス（Discord、VRChat）はやみすきーアカウント保持者を対象としています。
 
@@ -14,8 +15,8 @@ import { LinkCard, CardGrid, Badge } from '@astrojs/starlight/components';
 分散型プロトコルによるSNSと、自前で運用する発信基盤。中央集権型のプラットフォームでは運営企業の方針変更やサービス終了の影響を避けられませんが、分散型・セルフホストであれば繋がりも発信も自分たちの手に残ります。
 
 <CardGrid>
-  <LinkCard title="Misskey" href="https://yami.ski" description="Fediverseに参加する分散型SNS。メンタルファースト・プライバシーファーストを掲げるYAMIエコシステムの中核" />
-  <LinkCard title="EmDash" href="https://dash.yami.ski" description="Cloudflare製のOSS CMS。プラットフォームに依存せず記事やお知らせを発信する" />
+  <ServiceCard icon="/icons/misskey.png" title="Misskey" href="https://yami.ski" description="Fediverseに参加する分散型SNS。メンタルファースト・プライバシーファーストを掲げるYAMIエコシステムの中核" />
+  <ServiceCard icon="/icons/emdash.svg" title="EmDash" href="https://dash.yami.ski" description="Cloudflare製のOSS CMS。プラットフォームに依存せず記事やお知らせを発信する" />
 </CardGrid>
 
 ## たすける
@@ -23,8 +24,8 @@ import { LinkCard, CardGrid, Badge } from '@astrojs/starlight/components';
 メンタルヘルスやプライバシー保護に配慮した、YAMIの思想が反映されたサービスです。他サーバーのユーザーでも利用できます。
 
 <CardGrid>
-  <LinkCard title="Yamix" href="https://mix.yami.ski" description="Misskey連携の人生相談サービス" />
-  <LinkCard title="Neo Quesdon" href="https://neo-quesdon.yami.ski" description="Misskey/Mastodon連携の匿名質問箱。回答はSNSに投稿される" />
+  <ServiceCard icon="/icons/yamix.png" title="Yamix" href="https://mix.yami.ski" description="Misskey連携の人生相談サービス" />
+  <ServiceCard icon="/icons/neo-quesdon.png" title="Neo Quesdon" href="https://neo-quesdon.yami.ski" description="Misskey/Mastodon連携の匿名質問箱。回答はSNSに投稿される" />
 </CardGrid>
 
 ## まもる
@@ -32,8 +33,8 @@ import { LinkCard, CardGrid, Badge } from '@astrojs/starlight/components';
 E2EE（エンドツーエンド暗号化）対応のサービスでは、サーバー運営者であっても内容を見ることができません。データを収集しなければ、売ることも悪用することもできません。
 
 <CardGrid>
-  <LinkCard title="Element" href="https://chat.yami.ski" description="Matrixプロトコルによる分散型チャット。E2EE対応" />
-  <LinkCard title="CryptPad" href="https://pad.yami.ski" description="E2EE対応のオフィススイート。ドキュメント・スプレッドシート・スライドを共同編集可能" />
+  <ServiceCard icon="/icons/element.png" title="Element" href="https://chat.yami.ski" description="Matrixプロトコルによる分散型チャット。E2EE対応" />
+  <ServiceCard icon="/icons/cryptpad.png" title="CryptPad" href="https://pad.yami.ski" description="E2EE対応のオフィススイート。ドキュメント・スプレッドシート・スライドを共同編集可能" />
 </CardGrid>
 
 ## だべる
@@ -43,8 +44,8 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 **やみすきーアカウント保持者向け**のサービスです。
 
 <CardGrid>
-  <LinkCard title="Discord" href="https://discord.gg/WMgzEBvr8b" description="雑談・通話・ゲームの溜まり場。聞き専や作業通話も歓迎（承認制）" />
-  <LinkCard title="VRChat" href="https://vrc.group/YMSKY.5787" description="バーチャル空間でたむろする。フォロワー数による序列がなく、同じ空間にいる感覚で交流できる" />
+  <ServiceCard icon="/icons/discord.svg" title="Discord" href="https://discord.gg/WMgzEBvr8b" description="雑談・通話・ゲームの溜まり場。聞き専や作業通話も歓迎（承認制）" />
+  <ServiceCard icon="/icons/vrchat.png" title="VRChat" href="https://vrc.group/YMSKY.5787" description="バーチャル空間でたむろする。フォロワー数による序列がなく、同じ空間にいる感覚で交流できる" />
 </CardGrid>
 
 ## あそぶ
@@ -52,6 +53,6 @@ E2EE（エンドツーエンド暗号化）対応のサービスでは、サー�
 共同体験を通じた繋がりと、技術的に成長できる場。
 
 <CardGrid>
-  <LinkCard title="Minecraft" href="minecraft://play?server=mmc.yami.ski:1373" description="Java/Bedrock両対応。サーバー管理やプラグイン開発を通じた技術学習の機会も" />
-  <LinkCard title="CTFd" href="https://ctf.yami.ski" description="セキュリティを学ぶCTFプラットフォーム。競争しながら知見を共有し合う" />
+  <ServiceCard icon="/icons/minecraft.png" title="Minecraft" href="minecraft://play?server=mmc.yami.ski:1373" description="Java/Bedrock両対応。サーバー管理やプラグイン開発を通じた技術学習の機会も" />
+  <ServiceCard icon="/icons/ctfd.png" title="CTFd" href="https://ctf.yami.ski" description="セキュリティを学ぶCTFプラットフォーム。競争しながら知見を共有し合う" />
 </CardGrid>

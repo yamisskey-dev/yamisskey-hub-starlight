@@ -1,0 +1,25 @@
+---
+import { LinkCard } from '@astrojs/starlight/components';
+
+interface Props {
+	icon: string;
+	title: string;
+	href: string;
+	description?: string;
+}
+
+const { icon, title, ...rest } = Astro.props;
+---
+
+<LinkCard title={`<img src="${icon}" alt="" class="service-icon" />${title}`} {...rest} />
+
+<style is:global>
+	.sl-link-card .service-icon {
+		display: inline-block;
+		width: 1.25em;
+		height: 1.25em;
+		vertical-align: -0.25em;
+		margin-inline-end: 0.5em;
+		border-radius: 0.25em;
+	}
+</style>

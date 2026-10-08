@@ -12,19 +12,20 @@ hero:
       icon: right-arrow
 ---
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid } from '@astrojs/starlight/components';
+import ServiceCard from '../../components/ServiceCard.astro';
 
 ## サービス一覧
 
 <CardGrid>
-<LinkCard title='Misskey' href='https://yami.ski' description='Fediverseに参加する分散型SNS' />
-<LinkCard title='EmDash' href='https://dash.yami.ski' description='OSS CMSによる情報発信サイト' />
-<LinkCard title='Yamix' href='https://mix.yami.ski' description='Misskey連携の人生相談サービス' />
-<LinkCard title='Neo Quesdon' href='https://neo-quesdon.yami.ski' description='Misskey/Mastodon連携の匿名質問箱' />
-<LinkCard title='Element' href='https://chat.yami.ski' description='E2EE対応の分散型チャット' />
-<LinkCard title='CryptPad' href='https://pad.yami.ski' description='E2EE対応のオフィススイート' />
-<LinkCard title='Discord' href='https://discord.gg/WMgzEBvr8b' description='雑談・通話・ゲームの溜まり場' />
-<LinkCard title='VRChat' href='https://vrc.group/YMSKY.5787' description='バーチャル空間でのコミュニティ' />
-<LinkCard title='Minecraft' href='minecraft://play?server=mmc.yami.ski:1373' description='Java/Bedrock両対応のコミュニティサーバー' />
-<LinkCard title='CTFd' href='https://ctf.yami.ski' description='セキュリティを学ぶCTFプラットフォーム' />
+<ServiceCard icon='/icons/misskey.png' title='Misskey' href='https://yami.ski' description='Fediverseに参加する分散型SNS' />
+<ServiceCard icon='/icons/emdash.svg' title='EmDash' href='https://dash.yami.ski' description='OSS CMSによる情報発信サイト' />
+<ServiceCard icon='/icons/yamix.png' title='Yamix' href='https://mix.yami.ski' description='Misskey連携の人生相談サービス' />
+<ServiceCard icon='/icons/neo-quesdon.png' title='Neo Quesdon' href='https://neo-quesdon.yami.ski' description='Misskey/Mastodon連携の匿名質問箱' />
+<ServiceCard icon='/icons/element.png' title='Element' href='https://chat.yami.ski' description='E2EE対応の分散型チャット' />
+<ServiceCard icon='/icons/cryptpad.png' title='CryptPad' href='https://pad.yami.ski' description='E2EE対応のオフィススイート' />
+<ServiceCard icon='/icons/discord.svg' title='Discord' href='https://discord.gg/WMgzEBvr8b' description='雑談・通話・ゲームの溜まり場' />
+<ServiceCard icon='/icons/vrchat.png' title='VRChat' href='https://vrc.group/YMSKY.5787' description='バーチャル空間でのコミュニティ' />
+<ServiceCard icon='/icons/minecraft.png' title='Minecraft' href='minecraft://play?server=mmc.yami.ski:1373' description='Java/Bedrock両対応のコミュニティサーバー' />
+<ServiceCard icon='/icons/ctfd.png' title='CTFd' href='https://ctf.yami.ski' description='セキュリティを学ぶCTFプラットフォーム' />
 </CardGrid>
