@@ -115,6 +115,9 @@ if (image) {
 
 	@media (prefers-reduced-motion: reduce) {
 		.blob,
+		.art,
+		.art::before,
+		.art::after,
 		.art img {
 			animation: none;
 		}
@@ -151,13 +154,66 @@ if (image) {
 		margin-top: 1.5rem;
 	}
 
-	.art img {
-		display: block;
+	/*
+	 * ロゴ（三日月＋鍵）をローディング風に見せる 3 層構成:
+	 *   ::after  … 背後でゆっくり明滅するグロウ
+	 *   img      … 三日月本体。yamisskey-down（6 秒）よりかなり遅い 30 秒で 1 回転
+	 *   ::before … 三日月の外側を逆回転する「彗星の尾」状の光の弧
+	 */
+	.art {
+		position: relative;
 		width: min(60%, 18rem);
-		height: auto;
+		aspect-ratio: 1;
 		margin-inline: auto;
-		/* yamisskey-down と同じく 6 秒で 1 回転 */
-		animation: yami-spin 6s linear infinite;
+	}
+
+	.art img {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: auto;
+		animation: yami-spin 30s linear infinite;
+	}
+
+	.art::before,
+	.art::after {
+		content: '';
+		position: absolute;
+		border-radius: 50%;
+		pointer-events: none;
+	}
+
+	.art::before {
+		inset: -9%;
+		background: conic-gradient(
+			from 0deg,
+			transparent 0 62%,
+			var(--yami-accent) 100%
+		);
+		/* conic-gradient を細いリングだけ残す */
+		mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+		opacity: 0.85;
+		animation: yami-spin 20s linear infinite reverse;
+	}
+
+	.art::after {
+		inset: 4%;
+		background: radial-gradient(circle, var(--yami-blob) 0%, transparent 70%);
+		opacity: 0.35;
+		filter: blur(12px);
+		animation: yami-breathe 10s ease-in-out infinite;
+	}
+
+	@keyframes yami-breathe {
+		0%,
+		100% {
+			transform: scale(0.9);
+			opacity: 0.25;
+		}
+		50% {
+			transform: scale(1.05);
+			opacity: 0.5;
+		}
 	}
 
 	@media (min-width: 50rem) {
@@ -172,7 +228,7 @@ if (image) {
 		.actions {
 			justify-content: flex-start;
 		}
-		.art img {
+		.art {
 			width: min(100%, 22rem);
 		}
 	}
