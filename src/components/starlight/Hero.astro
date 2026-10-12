@@ -160,9 +160,11 @@ if (image) {
 	 *   img      … 三日月本体。yamisskey-down（6 秒）よりかなり遅い 30 秒で 1 回転
 	 *   ::before … 三日月の外側を逆回転する「彗星の尾」状の光の弧
 	 */
+	/* misskey-hub-next のモバイル版 (≤1200px) はロゴ (Mi3d) を出さない。
+	 * 同じ挙動にして、2 カラムになる 75rem 以上でだけ見せる */
 	.art {
+		display: none;
 		position: relative;
-		width: min(60%, 18rem);
 		aspect-ratio: 1;
 		margin-inline: auto;
 	}
@@ -220,6 +222,11 @@ if (image) {
 		.yami-hero {
 			padding: 3rem 3rem 9rem;
 		}
+	}
+
+	/* Hub の desktop 切り替え (window.innerWidth > 1200) と同じ条件で 2 カラム + ロゴ。
+	 * ちょうど 1200px は Hub ではモバイル扱いなので > にする */
+	@media (width > 75rem) {
 		.inner {
 			grid-template-columns: 7fr 4fr;
 			text-align: start;
@@ -229,6 +236,7 @@ if (image) {
 			justify-content: flex-start;
 		}
 		.art {
+			display: block;
 			width: min(100%, 22rem);
 		}
 	}
