@@ -1,0 +1,255 @@
+/*
+ * やみはぶ テーマ
+ * misskey-hub-next のデザイン言語（ピル型ボタン・acrylic カード・ぼかしヘッダー・
+ * 白背景の docs ＋ 細い罫線のサイドバー）を Starlight 上で再現する。
+ */
+
+/* ------------------------------------------------------------------ */
+/* トークン                                                            */
+/* ------------------------------------------------------------------ */
+:root {
+  --yami-accent: #6e54f0;
+  --yami-gradient: linear-gradient(90deg, #6e54f0, #9a6cff, #c07cf5);
+  --yami-radius: 16px;
+  --yami-accent-shadow: 0 8px 20px -5px rgba(110, 84, 240, 0.4);
+  --yami-plain-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.15);
+  /* Aside（note）の青をブランドの紫に寄せる */
+  --sl-hue-blue: 252;
+}
+
+:root[data-theme='light'] {
+  --yami-nav-bg: rgba(255, 255, 255, 0.8);
+  --yami-chip-bg: rgba(0, 0, 0, 0.06);
+  --yami-chip-bg-hover: rgba(0, 0, 0, 0.1);
+  --yami-plain-bg: #fff;
+  --yami-card-bg: #fff;
+  --yami-card-hover-bg: #f6f4fa;
+  --yami-acrylic-bg: rgba(255, 255, 255, 0.45);
+  --yami-acrylic-fg: rgba(0, 0, 0, 0.75);
+  --yami-hero-bg: #e4e0ee;
+  --yami-landing-bg: #eeecf4;
+  --yami-dots: rgba(0, 0, 0, 0.14);
+  --yami-blob: #a48cff;
+  --sl-color-hairline-shade: var(--sl-color-gray-6);
+  --sl-color-bg-sidebar: var(--sl-color-bg);
+}
+
+:root[data-theme='dark'] {
+  --yami-nav-bg: rgba(34, 30, 46, 0.8);
+  --yami-chip-bg: rgba(255, 255, 255, 0.12);
+  --yami-chip-bg-hover: rgba(255, 255, 255, 0.18);
+  --yami-plain-bg: #2a2538;
+  --yami-card-bg: #221e2e;
+  --yami-card-hover-bg: #2a2538;
+  --yami-acrylic-bg: rgba(60, 54, 80, 0.45);
+  --yami-acrylic-fg: rgba(255, 255, 255, 0.87);
+  --yami-hero-bg: #1f1b2b;
+  --yami-landing-bg: #131019;
+  --yami-dots: rgba(255, 255, 255, 0.12);
+  --yami-blob: #6e54f0;
+  --sl-color-hairline-shade: var(--sl-color-gray-5);
+  --sl-color-bg-sidebar: var(--sl-color-bg);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background-color: var(--yami-accent);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------------ */
+/* ヘッダー（半透明＋ぼかし。ランディングでは下罫線なし）               */
+/* ------------------------------------------------------------------ */
+.page > header.header {
+  background-color: var(--yami-nav-bg);
+  border-bottom-color: var(--sl-color-hairline-shade);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+html[data-has-hero] .page > header.header {
+  border-bottom-color: transparent;
+}
+
+/* 円形アイコンボタン（テーマ切替・GitHub など） */
+.yami-icon-button {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--yami-chip-bg);
+  color: var(--sl-color-white);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.yami-icon-button:hover {
+  background-color: var(--yami-chip-bg-hover);
+}
+
+/* ------------------------------------------------------------------ */
+/* ボタン（ピル型。accent はグラデーション）                            */
+/* ------------------------------------------------------------------ */
+.yami-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.65em 1.5em;
+  border-radius: 999px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    background-position 0.3s ease,
+    transform 0.15s ease;
+}
+
+.yami-btn:hover {
+  transform: translateY(-1px);
+}
+
+.yami-btn-accent {
+  background-image: var(--yami-gradient);
+  background-size: 200% 100%;
+  background-position-x: 0%;
+  color: #fff;
+  box-shadow: var(--yami-accent-shadow);
+}
+
+.yami-btn-accent:hover {
+  background-position-x: 100%;
+  color: #fff;
+}
+
+.yami-btn-plain {
+  background-color: var(--yami-plain-bg);
+  color: var(--sl-color-white);
+  box-shadow: var(--yami-plain-shadow);
+}
+
+/* 半透明のすりガラスカード */
+.yami-acrylic {
+  background-color: var(--yami-acrylic-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--yami-acrylic-fg);
+  border-radius: var(--yami-radius);
+}
+
+/* ------------------------------------------------------------------ */
+/* ランディング（hero があるページ）                                    */
+/* ------------------------------------------------------------------ */
+html[data-has-hero] {
+  --sl-color-bg: var(--yami-landing-bg);
+  --sl-color-hairline: transparent;
+}
+
+html[data-has-hero] body {
+  --sl-content-width: 76rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* docs: サイドバー                                                     */
+/* ------------------------------------------------------------------ */
+#starlight__sidebar .sidebar-content {
+  padding-top: 1.5rem;
+}
+
+#starlight__sidebar .large {
+  font-weight: 700;
+}
+
+#starlight__sidebar a {
+  color: var(--sl-color-gray-2);
+  border-radius: 0.375rem;
+  padding: 0.35em 0.5rem;
+}
+
+#starlight__sidebar a:hover,
+#starlight__sidebar a:focus {
+  color: var(--sl-color-text-accent);
+}
+
+#starlight__sidebar a[aria-current='page'],
+#starlight__sidebar a[aria-current='page']:hover,
+#starlight__sidebar a[aria-current='page']:focus {
+  background-color: transparent;
+  color: var(--sl-color-text-accent);
+  font-weight: 700;
+}
+
+#starlight__sidebar ul ul li {
+  border-inline-start-width: 2px;
+}
+
+#starlight__sidebar ul ul li:has(> a[aria-current='page']) {
+  border-inline-start-color: var(--sl-color-text-accent);
+}
+
+/* ------------------------------------------------------------------ */
+/* docs: 右側の目次                                                     */
+/* ------------------------------------------------------------------ */
+#starlight__on-this-page {
+  font-size: var(--sl-text-sm);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.right-sidebar .right-sidebar-panel starlight-toc a {
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-3);
+}
+
+.right-sidebar .right-sidebar-panel starlight-toc a:hover {
+  color: var(--sl-color-text-accent);
+}
+
+.right-sidebar .right-sidebar-panel starlight-toc a[aria-current='true'] {
+  background-color: transparent;
+  color: var(--sl-color-text-accent);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ */
+/* docs: 本文                                                           */
+/* ------------------------------------------------------------------ */
+main h1#_top {
+  font-weight: 700;
+}
+
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
+  font-weight: 700;
+}
+
+.sl-markdown-content :is(h1, h2):not(:where(.not-content *)) {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+}
+
+/* ------------------------------------------------------------------ */
+/* 前後ページリンク                                                     */
+/* ------------------------------------------------------------------ */
+.yami-footer .pagination-links a {
+  border-radius: 0.75rem;
+  border-color: var(--sl-color-gray-5);
+  box-shadow: none;
+  transition: background-color 0.15s ease;
+}
+
+.yami-footer .pagination-links a:hover {
+  background-color: var(--yami-card-hover-bg);
+  border-color: var(--sl-color-gray-5);
+}
+
+.yami-footer .pagination-links .link-title {
+  font-size: var(--sl-text-lg);
+  font-weight: 700;
+}

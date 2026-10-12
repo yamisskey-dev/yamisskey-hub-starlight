@@ -1,0 +1,166 @@
+---
+// misskey-hub-next 風ヘッダー: 左にロゴ＋サイト名、中央にナビ、右に検索と円形ボタン。
+import type { Props } from '@astrojs/starlight/props';
+import { Icon } from '@astrojs/starlight/components';
+import Search from '@astrojs/starlight/components/Search.astro';
+import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+import ThemeSelect from './ThemeSelect.astro';
+
+const links = [
+	{ label: 'ガイド', href: '/guides/ecosystem/', match: '/guides/' },
+	{ label: 'リファレンス', href: '/reference/term/', match: '/reference/' },
+	{ label: 'やみすきー', href: 'https://yami.ski', external: true },
+];
+
+const path = Astro.url.pathname;
+---
+
+<div class="yami-header">
+	<div class="brand">
+		<SiteTitle {...Astro.props} />
+	</div>
+	<nav class="nav" aria-label="メインナビゲーション">
+		{
+			links.map((link) => (
+				<a
+					href={link.href}
+					aria-current={link.match && path.startsWith(link.match) ? 'true' : undefined}
+					target={link.external ? '_blank' : undefined}
+					rel={link.external ? 'noopener' : undefined}
+				>
+					{link.label}
+					{link.external && <Icon name="external" size="0.9em" />}
+				</a>
+			))
+		}
+	</nav>
+	<div class="right">
+		<Search {...Astro.props} />
+		<div class="tools sl-hidden md:sl-flex">
+			<ThemeSelect {...Astro.props} />
+			<div class="social">
+				<SocialIcons {...Astro.props} />
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.yami-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		height: 100%;
+	}
+
+	/* サイドバーのないページではヘッダー中身を中央寄せにする */
+	:global(html:not([data-has-sidebar])) .yami-header {
+		max-width: 72rem;
+		margin-inline: auto;
+	}
+
+	.brand {
+		display: flex;
+		align-items: center;
+		min-width: 0;
+		overflow: clip;
+		padding: 0.25rem;
+		margin: -0.25rem;
+	}
+
+	.yami-header .brand :global(.site-title) {
+		gap: 0.5rem;
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--sl-color-white);
+	}
+
+	.yami-header .brand :global(img) {
+		height: 1.75rem;
+	}
+
+	.nav {
+		display: none;
+		align-items: center;
+		gap: 2rem;
+		font-size: 0.9rem;
+	}
+
+	.nav a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25em;
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+
+	.nav a:hover,
+	.nav a[aria-current='true'] {
+		color: var(--sl-color-text-accent);
+	}
+
+	.right {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-inline-start: auto;
+	}
+
+	.tools {
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	/* 検索ボタンをピル型に */
+	.yami-header :global(button[data-open-modal]) {
+		border: 0;
+		border-radius: 999px;
+		background-color: transparent;
+		box-shadow: none;
+		width: auto;
+	}
+
+	/* GitHub などのソーシャルリンクを円形ボタンに */
+	.yami-header .social :global(a) {
+		display: grid;
+		place-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		padding: 0;
+		margin: 0;
+		border-radius: 999px;
+		background-color: var(--yami-chip-bg);
+		color: var(--sl-color-white);
+		transition: background-color 0.15s ease;
+	}
+
+	.yami-header .social :global(a:hover) {
+		opacity: 1;
+		background-color: var(--yami-chip-bg-hover);
+	}
+
+	@media (min-width: 50rem) {
+		.yami-header {
+			gap: 2rem;
+		}
+		.brand {
+			padding-inline-end: 2rem;
+			border-inline-end: 1px solid var(--sl-color-hairline-shade);
+		}
+		.nav {
+			display: flex;
+		}
+		.yami-header :global(button[data-open-modal]) {
+			height: 2.5rem;
+			padding-inline: 0.875rem 0.625rem;
+			background-color: var(--yami-chip-bg);
+			color: var(--sl-color-gray-2);
+		}
+		.yami-header :global(button[data-open-modal]:hover) {
+			background-color: var(--yami-chip-bg-hover);
+			color: var(--sl-color-white);
+		}
+	}
+</style>

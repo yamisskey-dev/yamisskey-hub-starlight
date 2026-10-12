@@ -1,0 +1,70 @@
+---
+// hero 直下の 3 枚カード。文言は「やみすきーについて」から要約。
+const features = [
+	{
+		icon: '🌙',
+		title: '病んでいい場所',
+		description: '「死にたい」も「つらい」も、ここでは否定されない。弱音をそのまま言葉にしていい。',
+	},
+	{
+		icon: '🕳️',
+		title: '闇でいい場所',
+		description: 'ブラックジョークも自虐も露悪も、ここでは笑いになる。空気を読みすぎなくていい。',
+	},
+	{
+		icon: '🔒',
+		title: 'プライバシーファースト',
+		description: '分散型・セルフホスト・E2EE。データを集めないから、売ることも漏らすこともできない。',
+	},
+];
+---
+
+<div class="features not-content">
+	{
+		features.map((f) => (
+			<div class="item yami-acrylic">
+				<div class="icon" aria-hidden="true">
+					{f.icon}
+				</div>
+				<h3 class="title">{f.title}</h3>
+				<p class="description">{f.description}</p>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.features {
+		position: relative;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.item {
+		padding: 2rem 1.5rem;
+		text-align: center;
+	}
+
+	.icon {
+		font-size: 2.5rem;
+		line-height: 1;
+	}
+
+	.title {
+		margin: 0.75rem 0 0.5rem;
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: var(--sl-color-white);
+	}
+
+	.description {
+		font-size: 0.9rem;
+		line-height: 1.7;
+	}
+
+	@media (min-width: 50rem) {
+		.features {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

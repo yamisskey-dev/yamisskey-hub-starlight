@@ -1,22 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 import starlightPlugin from '@astrojs/starlight-tailwind';
 
+// 紫系のアクセント。600 がリンク・ボタン、200/900 がダーク/ライトの強調色
 const accent = {
-  200: '#DB9DFF',
-  600: '#93d7ff', // ライトテーマのボタン
-  900: '#8E78FF',
-  950: '#4B38A5',
+  200: '#CFC4FF',
+  600: '#6E54F0',
+  900: '#4B38A5',
+  950: '#2B2060',
 };
 
+// わずかに紫がかったニュートラルグレー（100 がライトの淡い背景、900 がダークの背景）
 const gray = {
-  100: '#DB9DFF', // ライトテーマのバーの色
-  200: '#FCF5FF',
-  300: '#A8B1C2', // ダークテーマの文字色
-  400: '#B4BDD0',
-  500: '#251B38', // ライトテーマの説明文色
-  700: '#16102C', // ライトテーマの文章色
-  800: '#16102C', // ダークテーマの背景色
-  900: '#0D0920', // ダークテーマの最も暗い色
+  100: '#F6F4FA',
+  200: '#ECE9F3',
+  300: '#D5D1E0',
+  400: '#A49FB5',
+  500: '#6F6984',
+  600: '#4B4660',
+  700: '#312C42',
+  800: '#221E2E',
+  900: '#17141F',
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -29,8 +32,10 @@ export default {
   theme: {
     extend: {
       colors: { accent, gray },
+      fontFamily: {
+        sans: ['Nunito', '"M PLUS Rounded 1c"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [starlightPlugin()],
 };
-
