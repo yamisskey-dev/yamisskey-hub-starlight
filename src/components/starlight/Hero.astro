@@ -1,0 +1,176 @@
+---
+// misskey-hub-next 風の hero。角丸の箱の中で blob がゆっくり回る。
+import { Image } from 'astro:assets';
+import { Icon } from '@astrojs/starlight/components';
+import type { Props } from '@astrojs/starlight/props';
+
+const { data } = Astro.props.entry;
+const { title = data.title, tagline, image, actions = [] } = data.hero || {};
+
+let heroImage: ImageMetadata | undefined;
+if (image) {
+	if ('file' in image) heroImage = image.file;
+	else if ('dark' in image) heroImage = image.dark;
+}
+---
+
+<section class="yami-hero not-content">
+	<div class="bg" aria-hidden="true">
+		<svg class="blob blob-1" viewBox="-100 -100 200 200">
+			<path
+				fill="currentColor"
+				d="M52,-61C66,-50,76,-33,79,-15C82,3,78,22,68,37C58,52,42,63,24,70C6,77,-14,80,-31,74C-48,68,-62,53,-70,36C-78,19,-80,0,-75,-18C-70,-36,-58,-52,-43,-63C-28,-74,-9,-80,8,-78C25,-76,38,-72,52,-61Z"
+			/>
+		</svg>
+		<svg class="blob blob-2" viewBox="-100 -100 200 200">
+			<path
+				fill="currentColor"
+				d="M45,-55C59,-44,71,-29,75,-12C79,5,75,24,65,39C55,54,39,65,21,71C3,77,-17,78,-34,71C-51,64,-65,49,-72,32C-79,15,-79,-4,-72,-21C-65,-38,-51,-53,-36,-63C-21,-73,-4,-78,11,-76C26,-74,31,-66,45,-55Z"
+			/>
+		</svg>
+	</div>
+	<div class="inner">
+		<div class="copy">
+			<h1 id="_top" data-page-title set:html={title} />
+			{tagline && <p class="tagline" set:html={tagline} />}
+			{
+				actions.length > 0 && (
+					<div class="actions">
+						{actions.map(
+							({ attrs: { class: className, ...attrs } = {}, icon, link: href, text, variant }) => (
+								<a
+									{href}
+									class:list={[
+										'yami-btn',
+										variant === 'primary' ? 'yami-btn-accent' : 'yami-btn-plain',
+										className,
+									]}
+									{...attrs}
+								>
+									{text}
+									{icon?.name && <Icon name={icon.name} size="1.25em" />}
+									{icon?.html && <Fragment set:html={icon.html} />}
+								</a>
+							)
+						)}
+					</div>
+				)
+			}
+		</div>
+		{
+			heroImage && (
+				<div class="art">
+					<Image src={heroImage} width={400} height={400} alt={image?.alt || ''} loading="eager" />
+				</div>
+			)
+		}
+	</div>
+</section>
+
+<style>
+	.yami-hero {
+		position: relative;
+		border-radius: var(--yami-radius);
+		background-color: var(--yami-hero-bg);
+		overflow: clip;
+		padding: 2.5rem 1.5rem 8rem;
+		/* 直後のカードが hero の下端に重なるようにする */
+		margin-bottom: -7rem;
+	}
+
+	.bg {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.blob {
+		position: absolute;
+		width: 56rem;
+		height: 56rem;
+		opacity: 0.35;
+		color: var(--yami-blob);
+		animation: yami-spin linear infinite;
+	}
+	.blob-1 {
+		top: -34rem;
+		right: -22rem;
+		animation-duration: 60s;
+	}
+	.blob-2 {
+		top: 10rem;
+		left: -24rem;
+		animation-duration: 80s;
+		animation-direction: reverse;
+	}
+
+	@keyframes yami-spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.blob {
+			animation: none;
+		}
+	}
+
+	.inner {
+		position: relative;
+		max-width: 66rem;
+		margin-inline: auto;
+		display: grid;
+		gap: 2rem;
+		align-items: center;
+		text-align: center;
+	}
+
+	h1 {
+		font-size: clamp(2rem, 5vw, 3.5rem);
+		line-height: 1.2;
+		font-weight: 700;
+		color: var(--sl-color-white);
+	}
+
+	.tagline {
+		margin-top: 1rem;
+		font-size: clamp(var(--sl-text-base), 2vw, var(--sl-text-xl));
+		color: var(--sl-color-gray-2);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+
+	.art img {
+		display: block;
+		width: min(60%, 18rem);
+		height: auto;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 50rem) {
+		.yami-hero {
+			padding: 3rem 3rem 9rem;
+		}
+		.inner {
+			grid-template-columns: 7fr 4fr;
+			text-align: start;
+			padding-block: 2rem;
+		}
+		.actions {
+			justify-content: flex-start;
+		}
+		.art img {
+			width: min(100%, 22rem);
+		}
+	}
+</style>

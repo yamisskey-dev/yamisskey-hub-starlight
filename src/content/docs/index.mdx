@@ -8,16 +8,23 @@ hero:
   image:
     file: ../../assets/logo.webp
   actions:
-    - text: 入口
+    - text: はじめる
       link: /guides/about/
       icon: right-arrow
+    - text: サービス一覧
+      link: '#services'
+      variant: secondary
 ---
 
 import { CardGrid } from '@astrojs/starlight/components';
 import ServiceCard from '../../components/ServiceCard.astro';
+import Features from '../../components/landing/Features.astro';
+import Section from '../../components/landing/Section.astro';
+import GetStarted from '../../components/landing/GetStarted.astro';
 
-## サービス一覧
+<Features />
 
+<Section id="services" title="サービス一覧" dots>
 <CardGrid>
 <ServiceCard icon='/icons/misskey.png' title='Misskey' href='https://yami.ski' description='Fediverseに参加する分散型SNS' />
 <ServiceCard icon='/icons/emdash.svg' title='EmDash' href='https://dash.yami.ski' description='OSS CMSによる情報発信サイト' />
@@ -30,3 +37,6 @@ import ServiceCard from '../../components/ServiceCard.astro';
 <ServiceCard icon='/icons/minecraft.png' title='Minecraft' href='minecraft://play?server=mmc.yami.ski:1373' description='Java/Bedrock両対応のコミュニティサーバー' />
 <ServiceCard icon='/icons/ctfd.png' title='CTFd' href='https://ctf.yami.ski' description='セキュリティを学ぶCTFプラットフォーム' />
 </CardGrid>
+</Section>
+
+<GetStarted />

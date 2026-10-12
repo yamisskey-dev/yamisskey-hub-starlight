@@ -1,0 +1,74 @@
+---
+// 自動 → ライト → ダーク を順に切り替える円形ボタン。
+// Starlight 標準の <select> と同じ localStorage キー（starlight-theme）を使う。
+import { Icon } from '@astrojs/starlight/components';
+import type { Props } from '@astrojs/starlight/props';
+---
+
+<yami-theme-toggle>
+	<button type="button" class="yami-icon-button" aria-label={Astro.locals.t('themeSelect.accessibleLabel')}>
+		<Icon name="laptop" class="theme-icon theme-icon-auto" size="1.125rem" />
+		<Icon name="sun" class="theme-icon theme-icon-light" size="1.125rem" />
+		<Icon name="moon" class="theme-icon theme-icon-dark" size="1.125rem" />
+	</button>
+</yami-theme-toggle>
+
+{/* FOUC を避けるためインラインで現在の設定を data 属性に反映する */}
+<script is:inline>
+	(() => {
+		const stored = typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		document.documentElement.dataset.themePref = stored === 'light' || stored === 'dark' ? stored : 'auto';
+	})();
+</script>
+
+<script>
+	type Theme = 'auto' | 'light' | 'dark';
+
+	const storageKey = 'starlight-theme';
+	const order: Theme[] = ['auto', 'light', 'dark'];
+
+	const parseTheme = (theme: unknown): Theme =>
+		theme === 'light' || theme === 'dark' ? theme : 'auto';
+
+	const loadTheme = (): Theme =>
+		parseTheme(typeof localStorage !== 'undefined' && localStorage.getItem(storageKey));
+
+	const getPreferredColorScheme = (): Theme =>
+		matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+
+	function applyTheme(theme: Theme): void {
+		document.documentElement.dataset.theme = theme === 'auto' ? getPreferredColorScheme() : theme;
+		document.documentElement.dataset.themePref = theme;
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem(storageKey, theme === 'auto' ? '' : theme);
+		}
+	}
+
+	matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+		if (loadTheme() === 'auto') applyTheme('auto');
+	});
+
+	class YamiThemeToggle extends HTMLElement {
+		constructor() {
+			super();
+			applyTheme(loadTheme());
+			this.querySelector('button')?.addEventListener('click', () => {
+				const next = order[(order.indexOf(loadTheme()) + 1) % order.length]!;
+				applyTheme(next);
+			});
+		}
+	}
+	customElements.define('yami-theme-toggle', YamiThemeToggle);
+</script>
+
+<style>
+	.theme-icon {
+		display: none;
+	}
+	:global(html[data-theme-pref='auto']) .theme-icon-auto,
+	:global(html:not([data-theme-pref])) .theme-icon-auto,
+	:global(html[data-theme-pref='light']) .theme-icon-light,
+	:global(html[data-theme-pref='dark']) .theme-icon-dark {
+		display: block;
+	}
+</style>

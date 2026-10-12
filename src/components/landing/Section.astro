@@ -1,0 +1,56 @@
+---
+// ランディング用のセクション。dots を付けるとドット模様の背景になる。
+interface Props {
+	id?: string;
+	title?: string;
+	dots?: boolean;
+}
+
+const { id, title, dots = false } = Astro.props;
+---
+
+<section class:list={['yami-section not-content', { dots }]} {id}>
+	{
+		title && (
+			<h2 class="title">
+				<span>{title}</span>
+			</h2>
+		)
+	}
+	<div class="body"><slot /></div>
+</section>
+
+<style>
+	.yami-section {
+		position: relative;
+		isolation: isolate;
+		padding: 4rem 0;
+	}
+
+	.dots::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background-image: radial-gradient(var(--yami-dots) 2px, transparent 2.5px);
+		background-size: 30px 30px;
+		mask-image: linear-gradient(to bottom, transparent, #000 6rem, #000 calc(100% - 6rem), transparent);
+		pointer-events: none;
+	}
+
+	.title {
+		margin: 0 0 2.5rem;
+		text-align: center;
+		font-size: clamp(var(--sl-text-2xl), 3vw, var(--sl-text-3xl));
+		font-weight: 800;
+		color: var(--sl-color-white);
+	}
+
+	.title > span {
+		background-image: var(--yami-gradient);
+		background-repeat: no-repeat;
+		background-size: 100% 6px;
+		background-position: 0 calc(100% + 2px);
+		padding-bottom: 0.2em;
+	}
+</style>

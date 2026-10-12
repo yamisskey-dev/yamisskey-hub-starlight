@@ -1,0 +1,45 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import EditLink from '@astrojs/starlight/components/EditLink.astro';
+import LastUpdated from '@astrojs/starlight/components/LastUpdated.astro';
+import Pagination from '@astrojs/starlight/components/Pagination.astro';
+
+const { hasSidebar, editUrl, lastUpdated } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="yami-footer not-content">
+	{hasSidebar && <Pagination {...Astro.props} />}
+	{
+		(editUrl || lastUpdated) && (
+			<div class="meta">
+				<EditLink {...Astro.props} />
+				<LastUpdated {...Astro.props} />
+			</div>
+		)
+	}
+	<p class="copyright">&copy; {year} YAMI DAO</p>
+</footer>
+
+<style>
+	.yami-footer {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-top: 3rem;
+	}
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 2rem;
+		justify-content: flex-end;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+	.copyright {
+		text-align: center;
+		padding: 2rem 1rem 0;
+		font-size: 0.85rem;
+		opacity: 0.7;
+	}
+</style>

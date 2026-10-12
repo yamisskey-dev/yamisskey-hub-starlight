@@ -1,0 +1,67 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+import Section from './Section.astro';
+
+const items = [
+	{ icon: '🚪', title: 'やみすきーを知る', label: 'やみすきーについて', href: '/guides/about/' },
+	{ icon: '✉️', title: 'アカウントを作る', label: '承認制について', href: '/guides/approval/' },
+	{ icon: '📖', title: '使い方を覚える', label: 'はじめてのやみすきー', href: '/guides/tutorial/' },
+	{ icon: '⚖️', title: 'ルールを読む', label: 'モデレーション原則', href: '/reference/moderation/' },
+];
+---
+
+<Section id="get-started" title="はじめる">
+	<div class="grid">
+		{
+			items.map((item) => (
+				<div class="item yami-acrylic">
+					<div class="icon" aria-hidden="true">
+						{item.icon}
+					</div>
+					<b class="title">{item.title}</b>
+					<a class="yami-btn yami-btn-accent" href={item.href}>
+						{item.label}
+						<Icon name="right-arrow" size="1.25em" />
+					</a>
+				</div>
+			))
+		}
+	</div>
+</Section>
+
+<style>
+	.grid {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 2.5rem 1.5rem;
+		text-align: center;
+	}
+
+	.icon {
+		font-size: 2.5rem;
+		line-height: 1;
+	}
+
+	.title {
+		font-size: 1.2rem;
+		color: var(--sl-color-white);
+	}
+
+	.item .yami-btn {
+		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 50rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1.5rem;
+		}
+	}
+</style>
