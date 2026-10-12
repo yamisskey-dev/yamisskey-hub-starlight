@@ -114,7 +114,8 @@ if (image) {
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.blob {
+		.blob,
+		.art img {
 			animation: none;
 		}
 	}
@@ -155,6 +156,8 @@ if (image) {
 		width: min(60%, 18rem);
 		height: auto;
 		margin-inline: auto;
+		/* yamisskey-down と同じく 6 秒で 1 回転 */
+		animation: yami-spin 6s linear infinite;
 	}
 
 	@media (min-width: 50rem) {
